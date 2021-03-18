@@ -645,9 +645,9 @@ object MyForm: TMyForm
   end
   object Panel9: TPanel
     Left = 1232
-    Top = 20
+    Top = 188
     Width = 210
-    Height = 111
+    Height = 154
     BevelOuter = bvNone
     BorderStyle = bsSingle
     Caption = 'Panel1'
@@ -657,21 +657,20 @@ object MyForm: TMyForm
     TabOrder = 10
     DesignSize = (
       208
-      109)
+      152)
     object Label23: TLabel
       Left = 10
-      Top = 10
+      Top = 11
       Width = 188
       Height = 13
       Alignment = taCenter
       Anchors = [akLeft, akTop, akRight]
       AutoSize = False
       Caption = 'REFLEX'#195'O'
-      ExplicitWidth = 190
     end
     object cbEixoX: TCheckBox
       Left = 10
-      Top = 29
+      Top = 52
       Width = 190
       Height = 17
       Caption = 'Refletir no eixo X'
@@ -679,7 +678,7 @@ object MyForm: TMyForm
     end
     object cbEixoY: TCheckBox
       Left = 10
-      Top = 50
+      Top = 75
       Width = 190
       Height = 17
       Caption = 'Refletir no eixo Y'
@@ -687,7 +686,7 @@ object MyForm: TMyForm
     end
     object btRefletir: TButton
       Left = 10
-      Top = 76
+      Top = 119
       Width = 190
       Height = 25
       Caption = 'REFLETIR'
@@ -697,9 +696,9 @@ object MyForm: TMyForm
   end
   object Panel10: TPanel
     Left = 1232
-    Top = 150
+    Top = 20
     Width = 210
-    Height = 111
+    Height = 154
     BevelOuter = bvNone
     BorderStyle = bsSingle
     Caption = 'Panel1'
@@ -709,7 +708,7 @@ object MyForm: TMyForm
     TabOrder = 11
     DesignSize = (
       208
-      109)
+      152)
     object Label24: TLabel
       Left = 10
       Top = 10
@@ -723,7 +722,7 @@ object MyForm: TMyForm
     end
     object Label25: TLabel
       Left = 10
-      Top = 32
+      Top = 53
       Width = 68
       Height = 13
       Alignment = taCenter
@@ -731,7 +730,7 @@ object MyForm: TMyForm
     end
     object Label26: TLabel
       Left = 120
-      Top = 32
+      Top = 53
       Width = 68
       Height = 13
       Alignment = taCenter
@@ -739,7 +738,7 @@ object MyForm: TMyForm
     end
     object edXc: TEdit
       Left = 10
-      Top = 48
+      Top = 72
       Width = 80
       Height = 19
       Alignment = taCenter
@@ -749,7 +748,7 @@ object MyForm: TMyForm
     end
     object edYc: TEdit
       Left = 120
-      Top = 48
+      Top = 69
       Width = 80
       Height = 19
       Alignment = taCenter
@@ -759,7 +758,7 @@ object MyForm: TMyForm
     end
     object btPontoCentral: TButton
       Left = 10
-      Top = 76
+      Top = 119
       Width = 190
       Height = 25
       Caption = 'PONTO CENTRAL'
