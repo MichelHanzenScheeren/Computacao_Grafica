@@ -34,7 +34,7 @@ void Dda::Desenhar(Janela mundo, Janela viewport) {
 		y = yvp1 + 0.5 * SIGN(deltay);
 
 		for (int j = 0; j < length; j++) {
-			_canvas->FrameRect(Rect(floor(x), floor(y), floor(x), floor(y)));
+			_canvas->Pixels[floor(x)][floor(y)] = clBlack;
 			x += deltax;
 			y += deltay;
 		}
@@ -42,6 +42,6 @@ void Dda::Desenhar(Janela mundo, Janela viewport) {
 	if(_pontos.size() == 1) {
 		xvp1 = _pontos[0].XMundoParaViewport(mundo, viewport);
 		yvp1 = _pontos[0].YMundoParaViewport(mundo, viewport);
-		_canvas->FrameRect(Rect(xvp1, yvp1, xvp1, yvp1));
+		_canvas->Pixels[xvp1][yvp1] = clBlack;
 	}
 }

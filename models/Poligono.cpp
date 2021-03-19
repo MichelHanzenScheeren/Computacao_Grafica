@@ -18,7 +18,6 @@ void Poligono::AdicionarPonto(Ponto2d ponto) {
 void Poligono::Desenhar(
 	TCanvas *canvas, int algoritmo, Janela mundo, Janela viewport)
 {
-	canvas->Brush->Color = clBlack;
 	if (Tipo.SubString(0, 7) == "Círculo") {
 		DesenharCirculo(canvas, mundo, viewport);
 	} else if (algoritmo == 0) {
@@ -37,7 +36,7 @@ void Poligono::DesenharCirculo(TCanvas *canvas, Janela mundo, Janela viewport) {
 	for(int i = 0; i < Pontos.size(); i++) {
 		xvp = Pontos[i].XMundoParaViewport(mundo, viewport);
 		yvp = Pontos[i].YMundoParaViewport(mundo, viewport);
-		canvas->FrameRect(Rect(xvp, yvp, xvp, yvp));
+		canvas->Pixels[xvp][yvp] = clBlack;
 	}
 }
 
@@ -47,7 +46,7 @@ void Poligono::LineTo(TCanvas *canvas, Janela mundo, Janela viewport) {
 		xvp = Pontos[i].XMundoParaViewport(mundo, viewport);
 		yvp = Pontos[i].YMundoParaViewport(mundo, viewport);
 		if(i == 0) {
-			canvas->FrameRect(Rect(xvp, yvp, xvp, yvp));
+            canvas->Pixels[xvp][yvp] = clBlack;
 			canvas->MoveTo(xvp, yvp);
 		} else {
 			canvas->LineTo(xvp, yvp);
@@ -61,7 +60,7 @@ UnicodeString Poligono::ToString() {
 
 void Poligono::MostrarPontos(TListBox *listbox) {
 	listbox->Clear();
-	for(int i = 0; i < Pontos.size(); i++)
+	for (int i = 0; i < Pontos.size(); i++)
 	   listbox->Items->Add(Pontos[i].ToString());
 }
 
@@ -159,23 +158,22 @@ void Poligono::AdicionarPontosAoCirculo(int xc, int yc, int x, int y) {
 	AdicionarPonto(Ponto2d(xc - y, yc - x)); // -y, -x
 }
 
-void Poligono::GerarPontosDoCirculo(Ponto2d p) {
+void Poligono::GerarPontosDoCirculo(Ponto2d c) {
 	if(Pontos.size() == 0) return;
-	double raio = sqrt(pow(p.X - Pontos[0].X, 2) + pow(p.Y - Pontos[0].Y, 2));
+	double raio = sqrt(pow(c.X - Pontos[0].X, 2) + pow(c.Y - Pontos[0].Y, 2));
 	double x = 0;
 	double y = raio;
-	double ponto = 1 - raio;
+	double p = 1 - raio;
 	AdicionarPontosAoCirculo(Pontos[0].X, Pontos[0].Y, x, y);
-	while(x < y) {
+	while(y > x) {
 		x += 1;
-		if (ponto >= 0)
-			y -= 1;
-		if(ponto < 0)
-			ponto += 2 * x + 1;
-		else
-			ponto += 2 * (x - y) + 1;
+		if(p < 0) {
+			p += 2.0 * x + 1.0;
+		} else {
+            y -= 1;
+			p += 2.0 * (x - y) + 1.0;
+		}
 		AdicionarPontosAoCirculo(Pontos[0].X, Pontos[0].Y, x, y);
 	}
-
 }
 

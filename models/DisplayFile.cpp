@@ -19,7 +19,7 @@ void DisplayFile::Desenhar(
 	canvas->Brush->Color = clWhite;
 	canvas->FillRect(Rect(0, 0, 500, 500));
 	canvas->Pen->Color = clBlack;
-	canvas->Pen->Width = 2;
+	canvas->Pen->Width = 1;
 	for(int i = 0; i < Poligonos.size(); i++)
 		Poligonos[i].Desenhar(canvas, algoritmo, mundo, viewport);
 }

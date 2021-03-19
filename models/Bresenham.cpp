@@ -41,7 +41,7 @@ void Bresenham::Desenhar(Janela mundo, Janela viewport) {
 		}
 		erro = 2 * deltay - deltax;
 		for (int j = 0; j < deltax; j++) {
-			_canvas->FrameRect(Rect(xvp1, yvp1, xvp1, yvp1));
+			_canvas->Pixels[xvp1][yvp1] = clBlack;
 			while (erro >= 0) {
 				if (interchange) {
 					xvp1 += signalx;
@@ -61,6 +61,6 @@ void Bresenham::Desenhar(Janela mundo, Janela viewport) {
 	if(_pontos.size() == 1) {
 		xvp1 = _pontos[0].XMundoParaViewport(mundo, viewport);
 		yvp1 = _pontos[0].YMundoParaViewport(mundo, viewport);
-		_canvas->FrameRect(Rect(xvp1, yvp1, xvp1, yvp1));
+        _canvas->Pixels[xvp1][yvp1] = clBlack;
 	}
 }
