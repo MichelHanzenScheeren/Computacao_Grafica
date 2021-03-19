@@ -135,6 +135,14 @@
             <DependentOn>models\Auxiliar.h</DependentOn>
             <BuildOrder>7</BuildOrder>
         </CppCompile>
+        <CppCompile Include="models\Bresenham.cpp">
+            <DependentOn>models\Bresenham.h</DependentOn>
+            <BuildOrder>9</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="models\Dda.cpp">
+            <DependentOn>models\Dda.h</DependentOn>
+            <BuildOrder>8</BuildOrder>
+        </CppCompile>
         <CppCompile Include="models\DisplayFile.cpp">
             <DependentOn>models\DisplayFile.h</DependentOn>
             <BuildOrder>6</BuildOrder>
@@ -142,6 +150,10 @@
         <CppCompile Include="models\Janela.cpp">
             <DependentOn>models\Janela.h</DependentOn>
             <BuildOrder>4</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="models\Matriz.cpp">
+            <DependentOn>models\Matriz.h</DependentOn>
+            <BuildOrder>10</BuildOrder>
         </CppCompile>
         <CppCompile Include="models\Poligono.cpp">
             <DependentOn>models\Poligono.h</DependentOn>

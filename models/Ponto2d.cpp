@@ -40,12 +40,26 @@ void Ponto2d::Escalonar(double fx, double fy) {
 	Y *= fy;
 }
 
+void Ponto2d::EscalonamentoHomogeneo(vector<vector<double>> homogenea) {
+	vector<vector<double>> matrizPonto = {{X, Y, 1}};
+	vector<vector<double>> result = Matriz::Multiplicar(matrizPonto, homogenea);
+	X = result[0][0];
+	Y = result[0][1];
+}
+
 void Ponto2d::Rotacionar(double angulo) {
 	double radian = angulo * M_PI / 180;
 	double newX = X * cos(radian) - Y * sin(radian);
 	double newY = X * sin(radian) + Y * cos(radian);
 	X = newX;
     Y = newY;
+}
+
+void Ponto2d::RotacaoHomogenea(vector<vector<double>> homogenea) {
+	vector<vector<double>> matrizPonto = {{X, Y, 1}};
+	vector<vector<double>> result = Matriz::Multiplicar(matrizPonto, homogenea);
+	X = result[0][0];
+	Y = result[0][1];
 }
 
 void Ponto2d::Refletir(int eixoX, int eixoY) {

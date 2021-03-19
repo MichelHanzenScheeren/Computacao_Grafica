@@ -1,7 +1,6 @@
 //---------------------------------------------------------------------------
 #pragma hdrstop
 #include "Poligono.h"
-#include <cmath>
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 
@@ -25,11 +24,12 @@ void Poligono::Desenhar(
 	} else if (algoritmo == 0) {
 		LineTo(canvas, mundo, viewport);
 	} else if (algoritmo == 1) {
-		DDA(canvas, mundo, viewport);
+		Dda *dda = new Dda(canvas, Pontos);
+		dda->Desenhar(mundo, viewport);
 	} else if (algoritmo == 2) {
-		Bresenham(canvas, mundo, viewport);
+		Bresenham *bresenham = new Bresenham(canvas, Pontos);
+		bresenham->Desenhar(mundo, viewport);
 	}
-
 }
 
 void Poligono::DesenharCirculo(TCanvas *canvas, Janela mundo, Janela viewport) {
@@ -38,10 +38,8 @@ void Poligono::DesenharCirculo(TCanvas *canvas, Janela mundo, Janela viewport) {
 		xvp = Pontos[i].XMundoParaViewport(mundo, viewport);
 		yvp = Pontos[i].YMundoParaViewport(mundo, viewport);
 		canvas->FrameRect(Rect(xvp, yvp, xvp, yvp));
-
 	}
 }
-
 
 void Poligono::LineTo(TCanvas *canvas, Janela mundo, Janela viewport) {
 	int xvp, yvp;
@@ -54,97 +52,6 @@ void Poligono::LineTo(TCanvas *canvas, Janela mundo, Janela viewport) {
 		} else {
 			canvas->LineTo(xvp, yvp);
 		}
-	}
-}
-
-
-
-void Poligono::DDA(TCanvas *canvas, Janela mundo, Janela viewport) {
-	int xvp1, yvp1, xvp2, yvp2, length;
-	double deltax, deltay, x, y;
-
-	for(int i = 0; i < Pontos.size() - 1; i++) {
-		xvp1 = Pontos[i].XMundoParaViewport(mundo, viewport);
-		yvp1 = Pontos[i].YMundoParaViewport(mundo, viewport);
-		xvp2 = Pontos[i + 1].XMundoParaViewport(mundo, viewport);
-		yvp2 = Pontos[i + 1].YMundoParaViewport(mundo, viewport);
-
-		if(abs(xvp2 - xvp1) >= abs(yvp2 - yvp1)) {
-			length = abs(xvp2 - xvp1);
-		} else {
-			length = abs(yvp2 - yvp1);
-		}
-
-		deltax = ((double)(xvp2 - xvp1)) / ((double)length);
-		deltay = ((double)(yvp2 - yvp1)) / ((double)length);
-		x = xvp1 + 0.5 * SIGN(deltax);
-		y = yvp1 + 0.5 * SIGN(deltay);
-
-		for (int j = 0; j < length; j++) {
-			canvas->FrameRect(Rect(floor(x), floor(y), floor(x), floor(y)));
-			x += deltax;
-			y += deltay;
-		}
-	}
-	if(Pontos.size() == 1) {
-		xvp1 = Pontos[0].XMundoParaViewport(mundo, viewport);
-		yvp1 = Pontos[0].YMundoParaViewport(mundo, viewport);
-		canvas->FrameRect(Rect(xvp1, yvp1, xvp1, yvp1));
-	}
-
-}
-
-void Poligono::Bresenham(TCanvas *canvas, Janela mundo, Janela viewport) {
-	
-	int deltax, deltay, signalx, signaly;
-	int xvp1, yvp1, xvp2, yvp2, interchange, tmp, erro;
-
-	for(int i = 0; i < Pontos.size() - 1; i++) {
-		xvp1 = Pontos[i].XMundoParaViewport(mundo, viewport);
-		yvp1 = Pontos[i].YMundoParaViewport(mundo, viewport);
-		xvp2 = Pontos[i + 1].XMundoParaViewport(mundo, viewport);
-		yvp2 = Pontos[i + 1].YMundoParaViewport(mundo, viewport);
-
-		deltax = abs(xvp2 - xvp1);
-		deltay = abs(yvp2 - yvp1);
-		signalx = SIGN(xvp2 - xvp1);
-		signaly = SIGN(yvp2 - yvp1);
-
-		if (signalx < 0)
-			xvp1 -= 1;
-		if (signaly < 0 )
-			yvp1 -= 1;
-
-		interchange = false;
-		if (deltay > deltax) {
-			tmp = deltax;
-			deltax = deltay;
-			deltay = tmp;
-			interchange = true;
-		}
-		erro = 2 * deltay - deltax;
-		for (int j = 0; j < deltax; j++) {
-			canvas->FrameRect(Rect(xvp1, yvp1, xvp1, yvp1));
-			while (erro >= 0) {
-				if (interchange) {
-					xvp1 += signalx;
-				} else {
-					yvp1 += signaly;
-				}
-				erro -= 2 * deltax;
-			}
-			if (interchange) {
-				yvp1 += signaly;
-			} else {
-				xvp1 += signalx;
-			}
-			erro += 2 * deltay;
-		}
-	}
-	if(Pontos.size() == 1) {
-		xvp1 = Pontos[0].XMundoParaViewport(mundo, viewport);
-		yvp1 = Pontos[0].YMundoParaViewport(mundo, viewport);
-		canvas->FrameRect(Rect(xvp1, yvp1, xvp1, yvp1));
 	}
 }
 
@@ -177,60 +84,20 @@ void Poligono::EscalonamentoHomogeneo(double fx, double fy) {
 	double dx = Pontos[0].X * (-1);
 	double dy = Pontos[0].Y * (-1);
 	// Transladar polígono para a origem
-	vector<vector<double>> mat1 = {
-		{1, 0, 0},
-		{0, 1, 0},
-		{dx, dy, 1}
-	};
+	vector<vector<double>> mat1 = {{1, 0, 0}, {0, 1, 0}, {dx, dy, 1}};
 	// Efetivamente escalonar o poligono
-	vector<vector<double>> mat2 = {
-		{fx, 0, 0},
-		{0, fy, 0},
-		{0, 0, 1}
-	};
+	vector<vector<double>> mat2 = {{fx, 0, 0}, {0, fy, 0}, {0, 0, 1}};
 	// Transladar a matriz de volta a posição original
-	vector<vector<double>> mat3 = {
-		{1, 0, 0},
-		{0, 1, 0},
-		{dx*-1, dy*-1, 1}
-	};
+	vector<vector<double>> mat3 = {{1, 0, 0}, {0, 1, 0},{dx*-1, dy*-1, 1}};
 
 	// Multiplicação das matrizes
-	vector<vector<double>> aux = MultiplicarMatrizes(mat1, mat2);
-	vector<vector<double>> homogenea = MultiplicarMatrizes(aux,mat3);
-    // Multiplicação de cada ponto pela matriz de transformação
-	for(int i = 0; i < Pontos.size(); i++) {
-		vector<vector<double>> point = {{Pontos[i].X, Pontos[i].Y, 1}};
-		vector<vector<double>> result = MultiplicarMatrizes(point, homogenea);
-		Pontos[i].Editar(result[0][0], result[0][1]);
-	}
-			
-}   
+	vector<vector<double>> aux = Matriz::Multiplicar(mat1, mat2);
+	vector<vector<double>> homogenea = Matriz::Multiplicar(aux,mat3);
 
-vector<vector<double>> Poligono::MultiplicarMatrizes(
-	vector<vector<double>> mat1, vector<vector<double>> mat2) 
-{
-	int m = mat1.size();
-	int n = mat1[0].size();
-	int j = mat2.size();
-	int k = mat2[0].size();
-	vector<vector<double>> result;
-	for (int i = 0; i < m; i++) {
-        result.push_back(vector<double>());
-		for (int j = 0; j < k; j++) {
-			result[i].push_back(0);
-		}
-	}
-	for (int l = 0; l < m; l++) {
-		for (int c = 0; c < k; c++) {
-			for (int x = 0; x < k; x++) {
-				result[l][c] = result[l][c] + mat1[l][x] * mat2[x][c];
-			}
-		}
-	}
-	return result;
+	// Aplicação do escalonamento em cada ponto
+	for(int i = 0; i < Pontos.size(); i++)
+		Pontos[i].EscalonamentoHomogeneo(homogenea);
 }
-
 
 void Poligono::Rotacionar(double angulo, bool homogeneo) {
 	if(homogeneo) {
@@ -239,8 +106,7 @@ void Poligono::Rotacionar(double angulo, bool homogeneo) {
 		for(int i = 0; i < Pontos.size(); i++) {
 			Pontos[i].Rotacionar(angulo);
 		}
-    }
-
+	}
 }
 
 void Poligono::RotacaoHomogenea(double angulo) {
@@ -249,39 +115,37 @@ void Poligono::RotacaoHomogenea(double angulo) {
 	double dx = ponto.X * (-1);
 	double dy = ponto.Y * (-1);
 	// Transladar polígono para que o ponto central seja na origem
-	vector<vector<double>> mat1 = {
-		{1, 0, 0},
-		{0, 1, 0},
-		{dx, dy, 1}
-	};
+	vector<vector<double>> mat1 = {{1, 0, 0}, {0, 1, 0}, {dx, dy, 1}};
 	// Efetivamente rotacionar o poligono
 	double radian = angulo * M_PI / 180;
-	vector<vector<double>> mat2 = {
-		{cos(radian), sin(radian), 0},
-		{-sin(radian), cos(radian), 0},
-		{0, 0, 1}
-	};
+	double coseno = cos(radian);
+	double seno =  sin(radian);
+	vector<vector<double>> mat2 = {{coseno,seno,0}, {-seno,coseno,0}, {0,0,1}};
 	// Transladar a matriz de volta a posição original
-	vector<vector<double>> mat3 = {
-		{1, 0, 0},
-		{0, 1, 0},
-		{dx*-1, dy*-1, 1}
-	};
+	vector<vector<double>> mat3 = {{1, 0, 0}, {0, 1, 0}, {dx*-1, dy*-1, 1}};
 
     // Multiplicação das matrizes
-	vector<vector<double>> aux = MultiplicarMatrizes(mat1, mat2);
-	vector<vector<double>> homogenea = MultiplicarMatrizes(aux, mat3);
-	// Multiplicação de cada ponto pela matriz de transformação
-	for(int i = 0; i < Pontos.size(); i++) {
-		vector<vector<double>> point = {{Pontos[i].X, Pontos[i].Y, 1}};
-		vector<vector<double>> result = MultiplicarMatrizes(point, homogenea);
-		Pontos[i].Editar(result[0][0], result[0][1]);
-	}
+	vector<vector<double>> aux = Matriz::Multiplicar(mat1, mat2);
+	vector<vector<double>> homogenea = Matriz::Multiplicar(aux, mat3);
+
+	// Aplicação da rotação em cada ponto
+	for(int i = 0; i < Pontos.size(); i++)
+		Pontos[i].RotacaoHomogenea(homogenea);
 }
 
 void Poligono::Refletir(int eixoX, int eixoY) {
 	for(int i = 0; i < Pontos.size(); i++)
 		Pontos[i].Refletir(eixoX, eixoY);
+}
+
+Ponto2d Poligono::PontoCentral() {
+	double somatorioX = 0;
+	double somatorioY = 0;
+	for (int i = 0; i < Pontos.size(); i++) {
+		somatorioX += Pontos[i].X;
+		somatorioY += Pontos[i].Y;
+	}
+	return Ponto2d(somatorioX / Pontos.size(), somatorioY / Pontos.size());
 }
 
 void Poligono::AdicionarPontosAoCirculo(int xc, int yc, int x, int y) {
@@ -302,7 +166,6 @@ void Poligono::GerarPontosDoCirculo(Ponto2d p) {
 	double y = raio;
 	double ponto = 1 - raio;
 	AdicionarPontosAoCirculo(Pontos[0].X, Pontos[0].Y, x, y);
-
 	while(x < y) {
 		x += 1;
 		if (ponto >= 0)
@@ -315,15 +178,4 @@ void Poligono::GerarPontosDoCirculo(Ponto2d p) {
 	}
 
 }
-
-Ponto2d Poligono::PontoCentral() {
-	double somatorioX = 0;
-	double somatorioY = 0;
-	for (int i = 0; i < Pontos.size(); i++) {
-		somatorioX += Pontos[i].X;
-		somatorioY += Pontos[i].Y;
-	}
-	return Ponto2d(somatorioX / Pontos.size(), somatorioY / Pontos.size());
-}
-
 

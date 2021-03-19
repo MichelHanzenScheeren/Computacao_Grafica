@@ -4,9 +4,13 @@
 #define PoligonoH
 
 #include "Ponto2d.h"
+#include "Dda.h"
+#include "Bresenham.h"
+#include "Matriz.h"
 #include <vector>
 #include <Vcl.ExtCtrls.hpp>
 #include<Vcl.StdCtrls.hpp>
+#include <cmath>
 
 using std::vector;
 using std::string;
@@ -25,8 +29,6 @@ class Poligono
 		void GerarPontosDoCirculo(Ponto2d);
 		void AdicionarPontosAoCirculo(int, int, int, int);
 		void LineTo(TCanvas *, Janela, Janela);
-		void DDA(TCanvas *, Janela, Janela);
-		void Bresenham(TCanvas *, Janela, Janela);
 		UnicodeString ToString();
 		void MostrarPontos(TListBox *);
 		void Transladar(double, double);

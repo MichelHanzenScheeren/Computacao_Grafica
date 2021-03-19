@@ -187,7 +187,7 @@ void __fastcall TMyForm::btRefletirClick(TObject *Sender) {
 		if(_poligonoValidoSelecionado(index, "refletir")) {
 			int eixoX = cbEixoX->Checked ? -1 : 1;
 			int eixoY = cbEixoY->Checked ? -1 : 1;
-			auxiliar.Refletir(index, eixoX, eixoY);
+			auxiliar.Refletir(index, eixoY, eixoX);
 			_redesenharEAtualizarPontosDoPoligono(index);
 		}
 	}

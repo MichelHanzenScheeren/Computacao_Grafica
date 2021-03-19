@@ -3,7 +3,10 @@
 #ifndef Ponto2dH
 #define Ponto2dH
 #include "Janela.h"
+#include "Matriz.h"
 #include<Vcl.StdCtrls.hpp>
+#include <vector>
+using std::vector;
 //---------------------------------------------------------------------------
 class Ponto2d
 {
@@ -18,7 +21,9 @@ class Ponto2d
 		UnicodeString ToString();
 		void Transladar(double, double);
 		void Escalonar(double, double);
+		void EscalonamentoHomogeneo(vector<vector<double>> homogenea);
 		void Rotacionar(double);
+        void RotacaoHomogenea(vector<vector<double>> homogenea);
         void Refletir(int, int);
 };
 #endif
