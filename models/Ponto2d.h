@@ -24,6 +24,7 @@ class Ponto2d
 		void EscalonamentoHomogeneo(vector<vector<double>> homogenea);
 		void Rotacionar(double);
         void RotacaoHomogenea(vector<vector<double>> homogenea);
-        void Refletir(int, int);
+		void Refletir(int, int);
+		short ObterValorDeClipping(Janela);
 };
 #endif

@@ -15,6 +15,12 @@ void Poligono::AdicionarPonto(Ponto2d ponto) {
 	Pontos.push_back(ponto);
 }
 
+void Poligono::AdicionarPontos(vector<Ponto2d> pontos) {
+	for (int i = 0; i < pontos.size(); i++) {
+	  AdicionarPonto(pontos[i]);  
+	}
+}
+
 void Poligono::Desenhar(
 	TCanvas *canvas, int algoritmo, Janela mundo, Janela viewport)
 {
@@ -55,7 +61,7 @@ void Poligono::LineTo(TCanvas *canvas, Janela mundo, Janela viewport) {
 }
 
 UnicodeString Poligono::ToString() {
-	return IntToStr(Id) + " - " + Tipo;
+	return "(" + IntToStr(Id) + ") " + Tipo;
 }
 
 void Poligono::MostrarPontos(TListBox *listbox) {
@@ -175,5 +181,20 @@ void Poligono::GerarPontosDoCirculo(Ponto2d c) {
 		}
 		AdicionarPontosAoCirculo(Pontos[0].X, Pontos[0].Y, x, y);
 	}
+}
+
+vector<Ponto2d> Poligono::FiltrarPontosDoClipping(Janela clipping) {
+	Clipping *clip = new Clipping(clipping);
+	if (Pontos.size() == 1) {
+		 clip->PontoUnico(Pontos[0]);
+	}
+	if (Tipo.SubString(0,3) == "Pol") {
+		for (int i = 0; i < Pontos.size() - 1; i++)
+			clip->SegmentoReta(Pontos[i], Pontos[i + 1]);
+	} else {
+		for (int i = 0; i < Pontos.size(); i++)
+			clip->PontoUnico(Pontos[i]);
+	}
+	return clip->ObterResultados();
 }
 

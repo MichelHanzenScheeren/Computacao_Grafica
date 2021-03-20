@@ -67,3 +67,16 @@ void Ponto2d::Refletir(int eixoX, int eixoY) {
 	Y *= eixoY;
 }
 
+short Ponto2d::ObterValorDeClipping(Janela clipping) {
+	short somatorio = 0;
+	if (X < clipping.Xmin)
+		somatorio += 1;
+	if (X > clipping.Xmax)
+		somatorio += 2;
+	if (Y < clipping.Ymin)
+		somatorio += 4;
+	if (Y > clipping.Ymax)
+		somatorio += 8;
+	return somatorio;
+}
+

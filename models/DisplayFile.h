@@ -4,14 +4,18 @@
 #define DisplayFileH
 
 #include "Poligono.h"
+#include "Janela.h"
 #include <vector>
 #include <Vcl.ExtCtrls.hpp>
 #include<Vcl.StdCtrls.hpp>
 //---------------------------------------------------------------------------
 class DisplayFile
 {
+	private:
+        int _id = 0;
 	public:
 		vector<Poligono> Poligonos;
+        int GerarNovoId();
 		void AdicionarPoligono(Poligono);
 		void AdicionarPontoAoUltimoPoligono(Ponto2d);
 		void Desenhar(TCanvas *, int, Janela, Janela);
@@ -23,6 +27,8 @@ class DisplayFile
 		void Rotacionar(int, double, bool);
 		void Refletir(int, int, int);
 		Ponto2d PontoCentral(int);
+        void PintarPontoCentral(Ponto2d, TCanvas *, Janela, Janela);
+		void AplicarClipping(Janela);
 };
 
 #endif

@@ -3,21 +3,24 @@
 #include "Auxiliar.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
-int Auxiliar::GerarNovoId() {
-	_id++;
-    return _id;
-}
-
 void Auxiliar::SalvarEixos() {
-	Poligono poligono1(GerarNovoId(), "Eixo x");
+	Poligono poligono1(_display.GerarNovoId(), "Eixo x");
 	poligono1.AdicionarPonto(Ponto2d(_mundo.Xmin, 0));
 	poligono1.AdicionarPonto(Ponto2d(_mundo.Xmax, 0));
 	_display.AdicionarPoligono(poligono1);
 
-	Poligono poligono2(GerarNovoId(), "Eixo y");
+	Poligono poligono2(_display.GerarNovoId(), "Eixo y");
 	poligono2.AdicionarPonto(Ponto2d(0, _mundo.Ymin));
 	poligono2.AdicionarPonto(Ponto2d(0, _mundo.Ymax));
 	_display.AdicionarPoligono(poligono2);
+
+	Poligono poligono3(_display.GerarNovoId(), "Clipping");
+	poligono3.AdicionarPonto(Ponto2d(_clipping.Xmin, _clipping.Ymin));
+	poligono3.AdicionarPonto(Ponto2d(_clipping.Xmin, _clipping.Ymax));
+	poligono3.AdicionarPonto(Ponto2d(_clipping.Xmax, _clipping.Ymax));
+	poligono3.AdicionarPonto(Ponto2d(_clipping.Xmax, _clipping.Ymin));
+    poligono3.AdicionarPonto(Ponto2d(_clipping.Xmin, _clipping.Ymin));
+	_display.AdicionarPoligono(poligono3);
 }
 
 void Auxiliar::DesenharPoligonos(TCanvas *canvas, int algoritmo) {
@@ -62,8 +65,8 @@ void Auxiliar::SalvarNovoPontoDoPoligono(int x, int y) {
 	Ponto2d ponto(XViewportParaMundo(x), YViewportParaMundo(y));
 	if(_primeiroPontoPoligono) {
 		_primeiroPontoPoligono = false;
-		int id = GerarNovoId();
-		Poligono poligono(id, "Poligono " + IntToStr(id - 2));
+		int id = _display.GerarNovoId();
+		Poligono poligono(id, "Poligono " + IntToStr(id - 3));
 		poligono.AdicionarPonto(ponto);
 		_display.AdicionarPoligono(poligono);
 	} else {
@@ -91,8 +94,8 @@ void Auxiliar::SalvarNovoPontoDoCirculo(int x, int y) {
 	Ponto2d ponto(XViewportParaMundo(x), YViewportParaMundo(y));
 	if(_primeiroPontoCirculo) {
 		_primeiroPontoCirculo = false;
-		int id = GerarNovoId();
-		Poligono poligono(id, "Círculo " + IntToStr(id - 2));
+		int id = _display.GerarNovoId();
+		Poligono poligono(id, "Círculo " + IntToStr(id - 3));
 		poligono.AdicionarPonto(ponto);
 		_display.AdicionarPoligono(poligono);
 	} else {
@@ -166,9 +169,10 @@ Ponto2d Auxiliar::PontoCentral(int index) {
 }
 
 void Auxiliar::PintarPontoCentral(TCanvas *canvas, Ponto2d ponto) {
-	int xvp = ponto.XMundoParaViewport(_mundo, _viewport);
-	int yvp = ponto.YMundoParaViewport(_mundo, _viewport);
-	canvas->Brush->Color = clRed;
-	canvas->FillRect(Rect(xvp - 2, yvp - 2, xvp + 2, yvp + 2));
+	_display.PintarPontoCentral(ponto, canvas, _mundo, _viewport);
+}
+
+void Auxiliar::AplicarClipping() {
+	_display.AplicarClipping(_clipping);
 }
 

@@ -40,6 +40,9 @@ bool _poligonoValidoSelecionado(int index, UnicodeString tipo) {
 	} else if(index == 0 || index == 1) {
 		ShowMessage("Não é possível " + tipo + " os eixos.");
 		return false;
+	} else if (index == 2) {
+		ShowMessage("Não é possível " + tipo + " a área de clipping.");
+		return false;
 	}
     return true;
 }
@@ -202,6 +205,14 @@ void __fastcall TMyForm::btPontoCentralClick(TObject *Sender)
 		edYc->Text = FloatToStr(ponto.Y);
 		auxiliar.PintarPontoCentral(img->Canvas, ponto);
 	}
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TMyForm::btnClippingClick(TObject *Sender)
+{
+	auxiliar.AplicarClipping();
+	auxiliar.DesenharPoligonos(img->Canvas, rgTipoReta->ItemIndex);
+    auxiliar.MostrarPoligonosDesenhados(lbPoligonos);
 }
 //---------------------------------------------------------------------------
 

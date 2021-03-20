@@ -12,16 +12,16 @@
 class Auxiliar
 {
 	private:
-        int _id = 0;
+
 		bool _desenhandoPoligono = false;
 		bool _primeiroPontoPoligono = false;
 		bool _desenhandoCirculo = false;
         bool _primeiroPontoCirculo = false;
 		Janela _mundo = Janela(-250, 250, -250, 250);
 		Janela _viewport = Janela(0, 500, 0, 500);
+		Janela _clipping = Janela(-100, 100, -100, 100);
 		DisplayFile _display;
 	public:
-		int GerarNovoId();
 		void SalvarEixos();
 		void DesenharPoligonos(TCanvas *, int);
 		void MostrarPoligonosDesenhados(TListBox *);
@@ -46,6 +46,7 @@ class Auxiliar
 		void Rotacionar(int, double, bool);
 		void Refletir(int, int, int);
 		Ponto2d PontoCentral(int);
-        void PintarPontoCentral(TCanvas *, Ponto2d);
+		void PintarPontoCentral(TCanvas *, Ponto2d);
+        void AplicarClipping();
 };
 #endif

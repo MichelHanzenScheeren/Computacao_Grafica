@@ -766,4 +766,40 @@ object MyForm: TMyForm
       OnClick = btPontoCentralClick
     end
   end
+  object Panel11: TPanel
+    Left = 1232
+    Top = 369
+    Width = 210
+    Height = 85
+    BevelOuter = bvNone
+    BorderStyle = bsSingle
+    Caption = 'Panel1'
+    Ctl3D = False
+    ParentCtl3D = False
+    ShowCaption = False
+    TabOrder = 12
+    DesignSize = (
+      208
+      83)
+    object Label27: TLabel
+      Left = 10
+      Top = 10
+      Width = 188
+      Height = 13
+      Alignment = taCenter
+      Anchors = [akLeft, akTop, akRight]
+      AutoSize = False
+      Caption = 'CONTROLE DO CLIPPING'
+      ExplicitWidth = 190
+    end
+    object btnClipping: TButton
+      Left = 10
+      Top = 37
+      Width = 190
+      Height = 38
+      Caption = 'APLICAR CLIPPING'
+      TabOrder = 0
+      OnClick = btnClippingClick
+    end
+  end
 end

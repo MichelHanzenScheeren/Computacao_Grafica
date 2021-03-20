@@ -87,6 +87,9 @@ __published:	// IDE-managed Components
 	TButton *btPontoCentral;
 	TCheckBox *cbEscalonamento;
 	TCheckBox *cbRotacao;
+	TPanel *Panel11;
+	TLabel *Label27;
+	TButton *btnClipping;
 	void __fastcall imgMouseMove(TObject *Sender, TShiftState Shift, int X, int Y);
 	void __fastcall lbPoligonosClick(TObject *Sender);
 	void __fastcall btDesenharPoligonoClick(TObject *Sender);
@@ -107,6 +110,7 @@ __published:	// IDE-managed Components
 	void __fastcall btRotacionarClick(TObject *Sender);
 	void __fastcall btRefletirClick(TObject *Sender);
 	void __fastcall btPontoCentralClick(TObject *Sender);
+	void __fastcall btnClippingClick(TObject *Sender);
 
 private:	// User declarations
 public:		// User declarations
