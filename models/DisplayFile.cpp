@@ -4,6 +4,7 @@
 #include <cmath>
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
+
 int DisplayFile::GerarNovoId() {
 	_id++;
     return _id;
@@ -39,14 +40,10 @@ void DisplayFile::MostrarPontosDeUmPoligono(int posicao, TListBox *listbox) {
 	Poligonos[posicao].MostrarPontos(listbox);
 }
 
-
-
 void DisplayFile::GerarPontosDoCirculo(Ponto2d ponto) {
 	if(Poligonos.size() != 0)
 		Poligonos[Poligonos.size() - 1].GerarPontosDoCirculo(ponto);
 }
-
-
 
 void DisplayFile::Transladar(int index, double dx, double dy) {
 	Poligonos[index].Transladar(dx, dy);
@@ -85,12 +82,21 @@ void DisplayFile::AplicarClipping(Janela clipping) {
 
 		vector<Ponto2d> pontos = Poligonos[i].FiltrarPontosDoClipping(clipping);
 		if(pontos.size() != 0) {
-             Poligono poligono(GerarNovoId(), Poligonos[i].Tipo + " - Clipped");
+			Poligono poligono(GerarNovoId(), Poligonos[i].Tipo + " - Clipped");
 			poligono.AdicionarPontos(pontos);
 			AdicionarPoligono(poligono);
 		}
 	}
 }
 
+void DisplayFile::ApagarPoligono(int index) {
 
+	if (index >= 0 && index < Poligonos.size()) {
+		vector<Poligono>::iterator myIterator;
+		myIterator = Poligonos.begin();
+		for (int i = 1; i <= index; i++)
+			myIterator++;
+		Poligonos.erase(myIterator);
+	}
+}
 

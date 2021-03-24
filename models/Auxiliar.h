@@ -47,6 +47,7 @@ class Auxiliar
 		void Refletir(int, int, int);
 		Ponto2d PontoCentral(int);
 		void PintarPontoCentral(TCanvas *, Ponto2d);
-        void AplicarClipping();
+		void AplicarClipping();
+        void ApagarPoligono(int);
 };
 #endif

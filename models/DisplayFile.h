@@ -1,5 +1,4 @@
 //---------------------------------------------------------------------------
-
 #ifndef DisplayFileH
 #define DisplayFileH
 
@@ -8,6 +7,8 @@
 #include <vector>
 #include <Vcl.ExtCtrls.hpp>
 #include<Vcl.StdCtrls.hpp>
+
+using std::vector;
 //---------------------------------------------------------------------------
 class DisplayFile
 {
@@ -29,6 +30,7 @@ class DisplayFile
 		Ponto2d PontoCentral(int);
         void PintarPontoCentral(Ponto2d, TCanvas *, Janela, Janela);
 		void AplicarClipping(Janela);
+		void ApagarPoligono(int);
 };
 
 #endif

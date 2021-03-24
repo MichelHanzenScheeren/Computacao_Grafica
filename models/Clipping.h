@@ -1,8 +1,6 @@
 //---------------------------------------------------------------------------
-
 #ifndef ClippingH
 #define ClippingH
-
 #include "Ponto2d.h"
 #include "Janela.h"
 #include <vector>
@@ -27,3 +25,4 @@ class Clipping {
 		vector<Ponto2d> ObterResultados();
 };
 #endif
+

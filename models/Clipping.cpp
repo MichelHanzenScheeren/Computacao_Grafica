@@ -1,7 +1,5 @@
 //---------------------------------------------------------------------------
-
 #pragma hdrstop
-
 #include "Clipping.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
@@ -89,3 +87,4 @@ void Clipping::_extremidadeXmin(Ponto2d ponto) {
 vector<Ponto2d> Clipping::ObterResultados() {
     return _pontos;
 }
+

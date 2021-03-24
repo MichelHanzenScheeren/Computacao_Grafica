@@ -1,10 +1,9 @@
 //---------------------------------------------------------------------------
-
 #pragma hdrstop
-
 #include "Janela.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
+
 Janela::Janela(double xmin, double xmax, double ymin, double ymax)
 {
 	Xmin = xmin;
@@ -44,3 +43,4 @@ void Janela::IncrementarY(double incrementoYmin, double incrementoYmax)
 		Ymax += incrementoYmax;
 	}
 }
+

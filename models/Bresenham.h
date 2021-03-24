@@ -1,8 +1,6 @@
 //---------------------------------------------------------------------------
-
 #ifndef BresenhamH
 #define BresenhamH
-
 #include <Vcl.ExtCtrls.hpp>
 #include "Janela.h"
 #include <vector>
@@ -19,3 +17,4 @@ class Bresenham {
 };
 
 #endif
+

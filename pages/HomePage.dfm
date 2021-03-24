@@ -2,8 +2,8 @@ object MyForm: TMyForm
   Left = 0
   Top = 0
   Caption = 'Computa'#231#227'o Gr'#225'fica'
-  ClientHeight = 845
-  ClientWidth = 1540
+  ClientHeight = 560
+  ClientWidth = 1462
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -770,7 +770,7 @@ object MyForm: TMyForm
     Left = 1232
     Top = 369
     Width = 210
-    Height = 85
+    Height = 67
     BevelOuter = bvNone
     BorderStyle = bsSingle
     Caption = 'Panel1'
@@ -780,7 +780,7 @@ object MyForm: TMyForm
     TabOrder = 12
     DesignSize = (
       208
-      83)
+      65)
     object Label27: TLabel
       Left = 10
       Top = 10
@@ -794,12 +794,48 @@ object MyForm: TMyForm
     end
     object btnClipping: TButton
       Left = 10
-      Top = 37
+      Top = 27
       Width = 190
-      Height = 38
+      Height = 30
       Caption = 'APLICAR CLIPPING'
       TabOrder = 0
       OnClick = btnClippingClick
+    end
+  end
+  object Panel12: TPanel
+    Left = 1232
+    Top = 456
+    Width = 210
+    Height = 67
+    BevelOuter = bvNone
+    BorderStyle = bsSingle
+    Caption = 'Panel1'
+    Ctl3D = False
+    ParentCtl3D = False
+    ShowCaption = False
+    TabOrder = 13
+    DesignSize = (
+      208
+      65)
+    object Label28: TLabel
+      Left = 10
+      Top = 10
+      Width = 188
+      Height = 13
+      Alignment = taCenter
+      Anchors = [akLeft, akTop, akRight]
+      AutoSize = False
+      Caption = 'APAGAR POL'#205'GONO'
+      ExplicitWidth = 190
+    end
+    object btApagar: TButton
+      Left = 10
+      Top = 29
+      Width = 190
+      Height = 30
+      Caption = 'APAGAR'
+      TabOrder = 0
+      OnClick = btApagarClick
     end
   end
 end

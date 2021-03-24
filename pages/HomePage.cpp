@@ -48,6 +48,7 @@ bool _poligonoValidoSelecionado(int index, UnicodeString tipo) {
 }
 
 //---------------------------------------------------------------------------
+
 __fastcall TMyForm::TMyForm(TComponent* Owner)
 	: TForm(Owner)
 {
@@ -57,6 +58,7 @@ __fastcall TMyForm::TMyForm(TComponent* Owner)
 
 }
 //---------------------------------------------------------------------------
+
 void __fastcall TMyForm::imgMouseMove(TObject *Sender, TShiftState Shift, int X,
           int Y)
 {
@@ -67,23 +69,27 @@ void __fastcall TMyForm::imgMouseMove(TObject *Sender, TShiftState Shift, int X,
 	lbMundo->Caption = "wd: (" + doubleToStr(xw) + ", " + doubleToStr(yw) + ")";
 }
 //---------------------------------------------------------------------------
+
 void __fastcall TMyForm::lbPoligonosClick(TObject *Sender) {
 	if(lbPoligonos->ItemIndex != -1)
 		auxiliar.MostrarPontosDeUmPoligono(lbPoligonos->ItemIndex, lbPontos);
     _limparEditsPontoCentral();
 }
 //---------------------------------------------------------------------------
+
 void __fastcall TMyForm::btDesenharPoligonoClick(TObject *Sender) {
 	auxiliar.IniciarDesenhoPoligono();
 }
 //---------------------------------------------------------------------------
+
 void __fastcall TMyForm::btDesenharCirculoClick(TObject *Sender) {
 	auxiliar.IniciarDesenhoCirculo();
 	_limparEditsPontoCentral();
 }
 //---------------------------------------------------------------------------
+
 void __fastcall TMyForm::imgMouseDown(TObject *Sender, TMouseButton Button, TShiftState Shift,
-          int X, int Y)
+		  int X, int Y)
 {
 	if(Button == mbLeft && auxiliar.EstaDesenhandoPoligono()) {
 		auxiliar.SalvarNovoPontoDoPoligono(X, Y);
@@ -100,6 +106,7 @@ void __fastcall TMyForm::imgMouseDown(TObject *Sender, TMouseButton Button, TShi
 	_limparEditsPontoCentral();
 }
 //---------------------------------------------------------------------------
+
 void __fastcall TMyForm::btAtualizarMundoClick(TObject *Sender) {
 	auxiliar.AtualizarCoordenadasDeMundo(
 		StrToFloat(edXwmin->Text), StrToFloat(edXwmax->Text),
@@ -109,47 +116,56 @@ void __fastcall TMyForm::btAtualizarMundoClick(TObject *Sender) {
 	_limparEditsPontoCentral();
 }
 //---------------------------------------------------------------------------
+
 void __fastcall TMyForm::btnZerarCoordenadasClick(TObject *Sender) {
 	auxiliar.AtualizarCoordenadasDeMundo(-250, 250, -250, 250);
 	_atualizarWindow();
 }
 //---------------------------------------------------------------------------
+
 void __fastcall TMyForm::btInClick(TObject *Sender) {
 	auxiliar.Zoom("in", StrToFloat(edIncremento->Text));
     _atualizarWindow();
 
 }
 //---------------------------------------------------------------------------
+
 void __fastcall TMyForm::btOutClick(TObject *Sender) {
 	auxiliar.Zoom("out", StrToFloat(edIncremento->Text));
 	_atualizarWindow();
 }
 //---------------------------------------------------------------------------
+
 void __fastcall TMyForm::btUpClick(TObject *Sender) {
 	auxiliar.Move("up", StrToFloat(edIncremento->Text));
 	_atualizarWindow();
 }
 //---------------------------------------------------------------------------
+
 void __fastcall TMyForm::btDownClick(TObject *Sender) {
 	auxiliar.Move("down", StrToFloat(edIncremento->Text));
 	_atualizarWindow();
 }
 //---------------------------------------------------------------------------
+
 void __fastcall TMyForm::btRightClick(TObject *Sender) {
 	auxiliar.Move("right", StrToFloat(edIncremento->Text));
 	_atualizarWindow();
 }
 //---------------------------------------------------------------------------
+
 void __fastcall TMyForm::btLeftClick(TObject *Sender) {
 	auxiliar.Move("left", StrToFloat(edIncremento->Text));
 	_atualizarWindow();
 }
 //---------------------------------------------------------------------------
+
 void __fastcall TMyForm::btnRedesenharClick(TObject *Sender) {
 	auxiliar.DesenharPoligonos(img->Canvas, rgTipoReta->ItemIndex);
     _limparEditsPontoCentral();
 }
 //---------------------------------------------------------------------------
+
 void __fastcall TMyForm::btTransladarClick(TObject *Sender) {
 	int index = lbPoligonos->ItemIndex;
 	if (_poligonoValidoSelecionado(index, "transladar")) {
@@ -160,6 +176,7 @@ void __fastcall TMyForm::btTransladarClick(TObject *Sender) {
 	}
 }
 //---------------------------------------------------------------------------
+
 
 void __fastcall TMyForm::btEscalonarClick(TObject *Sender) {
 	int index = lbPoligonos->ItemIndex;
@@ -196,8 +213,8 @@ void __fastcall TMyForm::btRefletirClick(TObject *Sender) {
 	}
 }
 //---------------------------------------------------------------------------
-void __fastcall TMyForm::btPontoCentralClick(TObject *Sender)
-{
+
+void __fastcall TMyForm::btPontoCentralClick(TObject *Sender) {
 	int index = lbPoligonos->ItemIndex;
 	if(_poligonoValidoSelecionado(index, "exibir ponto central")) {
 		Ponto2d ponto = auxiliar.PontoCentral(index);
@@ -208,11 +225,21 @@ void __fastcall TMyForm::btPontoCentralClick(TObject *Sender)
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TMyForm::btnClippingClick(TObject *Sender)
-{
+void __fastcall TMyForm::btnClippingClick(TObject *Sender) {
 	auxiliar.AplicarClipping();
 	auxiliar.DesenharPoligonos(img->Canvas, rgTipoReta->ItemIndex);
     auxiliar.MostrarPoligonosDesenhados(lbPoligonos);
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TMyForm::btApagarClick(TObject *Sender) {
+	int index = lbPoligonos->ItemIndex;
+	if(_poligonoValidoSelecionado(index, "apagar")) {
+		auxiliar.ApagarPoligono(index);
+		auxiliar.DesenharPoligonos(img->Canvas, rgTipoReta->ItemIndex);
+		auxiliar.MostrarPoligonosDesenhados(lbPoligonos);
+        lbPontos->Clear();
+    }
 }
 //---------------------------------------------------------------------------
 

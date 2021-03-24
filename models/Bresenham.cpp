@@ -1,16 +1,15 @@
 //---------------------------------------------------------------------------
-
 #pragma hdrstop
-
 #include "Bresenham.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
+
+#define SIGN(x) ((x) < 0 ? (-1): (1))
+
 Bresenham::Bresenham(TCanvas *canvas, vector<Ponto2d> pontos) {
 	_pontos = pontos;
 	_canvas = canvas;
 }
-
-#define SIGN(x) ((x) < 0 ? (-1): (1))
 
 void Bresenham::Desenhar(Janela mundo, Janela viewport) {
 	int deltax, deltay, signalx, signaly;
@@ -64,3 +63,4 @@ void Bresenham::Desenhar(Janela mundo, Janela viewport) {
         _canvas->Pixels[xvp1][yvp1] = clBlack;
 	}
 }
+

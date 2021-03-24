@@ -1,11 +1,10 @@
 //---------------------------------------------------------------------------
-
 #pragma hdrstop
-
 #include "Ponto2d.h"
 #include <cmath>
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
+
 Ponto2d::Ponto2d(double x, double y) {
 	X = x;
 	Y = y;

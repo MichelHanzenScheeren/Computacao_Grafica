@@ -1,16 +1,15 @@
 //---------------------------------------------------------------------------
-
 #pragma hdrstop
-
 #include "Dda.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
+
+#define SIGN(x) ((x) < 0 ? (-1): (1))
+
 Dda::Dda(TCanvas *canvas, vector<Ponto2d> pontos) {
 	_pontos = pontos;
 	_canvas = canvas;
 }
-
-#define SIGN(x) ((x) < 0 ? (-1): (1))
 
 void Dda::Desenhar(Janela mundo, Janela viewport) {
 	int xvp1, yvp1, xvp2, yvp2, length;
@@ -45,3 +44,4 @@ void Dda::Desenhar(Janela mundo, Janela viewport) {
 		_canvas->Pixels[xvp1][yvp1] = clBlack;
 	}
 }
+

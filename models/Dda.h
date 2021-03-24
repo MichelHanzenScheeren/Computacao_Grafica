@@ -1,8 +1,6 @@
 //---------------------------------------------------------------------------
-
 #ifndef DdaH
 #define DdaH
-
 #include <Vcl.ExtCtrls.hpp>
 #include "Janela.h"
 #include <vector>
@@ -18,5 +16,4 @@ class Dda {
         void Desenhar(Janela mundo, Janela viewport);
 };
 #endif
-
 

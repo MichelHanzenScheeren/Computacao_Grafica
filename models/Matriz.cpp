@@ -1,10 +1,9 @@
 //---------------------------------------------------------------------------
-
 #pragma hdrstop
-
 #include "Matriz.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
+
 vector<vector<double>> Matriz::Multiplicar(
 	vector<vector<double>> mat1, vector<vector<double>> mat2)
 {
@@ -32,3 +31,4 @@ vector<vector<double>> Matriz::Multiplicar(
 	}
 	return result;
 }
+

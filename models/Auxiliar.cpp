@@ -3,6 +3,7 @@
 #include "Auxiliar.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
+
 void Auxiliar::SalvarEixos() {
 	Poligono poligono1(_display.GerarNovoId(), "Eixo x");
 	poligono1.AdicionarPonto(Ponto2d(_mundo.Xmin, 0));
@@ -174,5 +175,9 @@ void Auxiliar::PintarPontoCentral(TCanvas *canvas, Ponto2d ponto) {
 
 void Auxiliar::AplicarClipping() {
 	_display.AplicarClipping(_clipping);
+}
+
+void Auxiliar::ApagarPoligono(int index) {
+	 _display.ApagarPoligono(index);
 }
 
