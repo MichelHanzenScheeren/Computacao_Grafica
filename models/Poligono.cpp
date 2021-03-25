@@ -70,6 +70,16 @@ void Poligono::MostrarPontos(TListBox *listbox) {
 	   listbox->Items->Add(Pontos[i].ToString());
 }
 
+void Poligono::AtualizarEixoX(double min, double max) {
+	Pontos[0].X = min;
+	Pontos[1].X = max;
+}
+
+void Poligono::AtualizarEixoY(double min, double max) {
+	Pontos[0].Y = min;
+	Pontos[1].Y = max;
+}
+
 void Poligono::Transladar(double dx, double dy) {
 	for(int i = 0; i < Pontos.size(); i++)
         Pontos[i].Transladar(dx, dy);

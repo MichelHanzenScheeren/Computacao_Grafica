@@ -23,6 +23,7 @@ class DisplayFile
 		void MostrarPoligonosDesenhados(TListBox *);
 		void GerarPontosDoCirculo(Ponto2d);
 		void MostrarPontosDeUmPoligono(int, TListBox *);
+        void AtualizarEixos(Janela mundo);
 		void Transladar(int, double, double);
 		void Escalonar(int, double, double, bool);
 		void Rotacionar(int, double, bool);

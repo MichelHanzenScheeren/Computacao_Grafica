@@ -578,7 +578,7 @@ object MyForm: TMyForm
       Top = 86
       Width = 190
       Height = 17
-      Caption = 'Usar coordenadas homog'#234'neas'
+      Caption = 'Usar transformada homog'#234'nea'
       TabOrder = 3
     end
   end
@@ -639,7 +639,7 @@ object MyForm: TMyForm
       Top = 86
       Width = 190
       Height = 17
-      Caption = 'Usar coordenadas homog'#234'neas'
+      Caption = 'Usar transformada homog'#234'nea'
       TabOrder = 2
     end
   end
@@ -768,7 +768,7 @@ object MyForm: TMyForm
   end
   object Panel11: TPanel
     Left = 1232
-    Top = 369
+    Top = 456
     Width = 210
     Height = 67
     BevelOuter = bvNone
@@ -804,7 +804,7 @@ object MyForm: TMyForm
   end
   object Panel12: TPanel
     Left = 1232
-    Top = 456
+    Top = 369
     Width = 210
     Height = 67
     BevelOuter = bvNone

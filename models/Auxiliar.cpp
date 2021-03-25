@@ -122,10 +122,7 @@ void Auxiliar::AtualizarCoordenadasDosForms(
 }
 
 void Auxiliar::AtualizarEixos() {
-	_display.Poligonos[0].Pontos[0].X = _mundo.Xmin;
-	_display.Poligonos[0].Pontos[1].X = _mundo.Xmax;
-	_display.Poligonos[1].Pontos[0].Y = _mundo.Ymin;
-	_display.Poligonos[1].Pontos[1].Y = _mundo.Ymax;
+	_display.AtualizarEixos(_mundo);
 }
 
 void Auxiliar::Zoom(UnicodeString type, double incremento) {

@@ -45,6 +45,11 @@ void DisplayFile::GerarPontosDoCirculo(Ponto2d ponto) {
 		Poligonos[Poligonos.size() - 1].GerarPontosDoCirculo(ponto);
 }
 
+void DisplayFile::AtualizarEixos(Janela mundo) {
+	Poligonos[0].AtualizarEixoX(mundo.Xmin, mundo.Xmax);
+	Poligonos[1].AtualizarEixoY(mundo.Ymin, mundo.Ymax);
+}
+
 void DisplayFile::Transladar(int index, double dx, double dy) {
 	Poligonos[index].Transladar(dx, dy);
 }

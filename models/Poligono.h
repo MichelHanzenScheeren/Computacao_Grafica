@@ -33,6 +33,8 @@ class Poligono
 		void LineTo(TCanvas *, Janela, Janela);
 		UnicodeString ToString();
 		void MostrarPontos(TListBox *);
+		void AtualizarEixoX(double, double);
+        void AtualizarEixoY(double, double);
 		void Transladar(double, double);
 		void Escalonar(double, double, bool);
 		void EscalonamentoHomogeneo(double, double);
