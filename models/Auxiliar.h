@@ -48,6 +48,7 @@ class Auxiliar
 		Ponto2d PontoCentral(int);
 		void PintarPontoCentral(TCanvas *, Ponto2d);
 		void AplicarClipping();
-        void ApagarPoligono(int);
+		void ApagarPoligono(int);
+        void AplicarCasteljau(int, int);
 };
 #endif

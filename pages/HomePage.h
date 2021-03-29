@@ -13,7 +13,6 @@ class TMyForm : public TForm
 {
 __published:	// IDE-managed Components
 	TPanel *MyPanel;
-	TImage *img;
 	TLabel *lbViewport;
 	TLabel *lbMundo;
 	TPanel *Panel1;
@@ -93,6 +92,13 @@ __published:	// IDE-managed Components
 	TPanel *Panel12;
 	TLabel *Label28;
 	TButton *btApagar;
+	TPanel *Panel13;
+	TLabel *Label29;
+	TButton *btCasteljau;
+	TImage *img;
+	TEdit *edCasteljau;
+	TStaticText *StaticText1;
+	TLabel *Label30;
 	void __fastcall imgMouseMove(TObject *Sender, TShiftState Shift, int X, int Y);
 	void __fastcall lbPoligonosClick(TObject *Sender);
 	void __fastcall btDesenharPoligonoClick(TObject *Sender);
@@ -115,6 +121,7 @@ __published:	// IDE-managed Components
 	void __fastcall btPontoCentralClick(TObject *Sender);
 	void __fastcall btnClippingClick(TObject *Sender);
 	void __fastcall btApagarClick(TObject *Sender);
+	void __fastcall btCasteljauClick(TObject *Sender);
 
 private:	// User declarations
 public:		// User declarations

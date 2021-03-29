@@ -2,7 +2,7 @@ object MyForm: TMyForm
   Left = 0
   Top = 0
   Caption = 'Computa'#231#227'o Gr'#225'fica'
-  ClientHeight = 560
+  ClientHeight = 707
   ClientWidth = 1462
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -45,10 +45,7 @@ object MyForm: TMyForm
       Align = alClient
       OnMouseDown = imgMouseDown
       OnMouseMove = imgMouseMove
-      ExplicitLeft = 200
-      ExplicitTop = 216
-      ExplicitWidth = 105
-      ExplicitHeight = 105
+      ExplicitTop = 2
     end
   end
   object Panel1: TPanel
@@ -163,6 +160,14 @@ object MyForm: TMyForm
       TabOrder = 5
       OnClick = btnZerarCoordenadasClick
     end
+    object StaticText1: TStaticText
+      Left = 0
+      Top = 197
+      Width = 59
+      Height = 17
+      Caption = 'StaticText1'
+      TabOrder = 6
+    end
   end
   object Panel2: TPanel
     Left = 542
@@ -194,16 +199,16 @@ object MyForm: TMyForm
     end
     object Label6: TLabel
       Left = 10
-      Top = 125
+      Top = 130
       Width = 33
       Height = 13
       Caption = 'Pontos'
     end
     object btDesenharPoligono: TButton
       Left = 10
-      Top = 226
+      Top = 245
       Width = 190
-      Height = 38
+      Height = 25
       Caption = 'DESENHAR POL'#205'GONO'
       TabOrder = 0
       OnClick = btDesenharPoligonoClick
@@ -212,16 +217,16 @@ object MyForm: TMyForm
       Left = 10
       Top = 40
       Width = 190
-      Height = 80
+      Height = 85
       ItemHeight = 13
       TabOrder = 1
       OnClick = lbPoligonosClick
     end
     object lbPontos: TListBox
       Left = 10
-      Top = 140
+      Top = 145
       Width = 190
-      Height = 80
+      Height = 85
       ItemHeight = 13
       TabOrder = 2
     end
@@ -352,7 +357,7 @@ object MyForm: TMyForm
     Left = 772
     Top = 20
     Width = 210
-    Height = 175
+    Height = 190
     BevelOuter = bvNone
     BorderStyle = bsSingle
     Caption = 'Panel1'
@@ -362,7 +367,7 @@ object MyForm: TMyForm
     TabOrder = 4
     DesignSize = (
       208
-      173)
+      188)
     object Label13: TLabel
       Left = 10
       Top = 10
@@ -376,9 +381,9 @@ object MyForm: TMyForm
     end
     object rgTipoReta: TRadioGroup
       Left = 10
-      Top = 29
+      Top = 34
       Width = 190
-      Height = 105
+      Height = 114
       ItemIndex = 0
       Items.Strings = (
         'LineTo'
@@ -390,8 +395,8 @@ object MyForm: TMyForm
     end
   end
   object btnRedesenhar: TButton
-    Left = 782
-    Top = 161
+    Left = 781
+    Top = 175
     Width = 190
     Height = 25
     Caption = 'REDESENHAR'
@@ -400,9 +405,9 @@ object MyForm: TMyForm
   end
   object Panel5: TPanel
     Left = 772
-    Top = 215
+    Top = 230
     Width = 210
-    Height = 85
+    Height = 70
     BevelOuter = bvNone
     BorderStyle = bsSingle
     Caption = 'Panel1'
@@ -412,7 +417,7 @@ object MyForm: TMyForm
     TabOrder = 6
     DesignSize = (
       208
-      83)
+      68)
     object Label14: TLabel
       Left = 10
       Top = 10
@@ -426,9 +431,9 @@ object MyForm: TMyForm
     end
     object btDesenharCirculo: TButton
       Left = 10
-      Top = 37
+      Top = 35
       Width = 190
-      Height = 38
+      Height = 25
       Caption = 'DESENHAR C'#205'RCULO'
       TabOrder = 0
       OnClick = btDesenharCirculoClick
@@ -836,6 +841,58 @@ object MyForm: TMyForm
       Caption = 'APAGAR'
       TabOrder = 0
       OnClick = btApagarClick
+    end
+  end
+  object Panel13: TPanel
+    Left = 20
+    Top = 560
+    Width = 210
+    Height = 120
+    BevelOuter = bvNone
+    BorderStyle = bsSingle
+    Caption = 'Panel1'
+    Ctl3D = False
+    ParentCtl3D = False
+    ShowCaption = False
+    TabOrder = 14
+    DesignSize = (
+      208
+      118)
+    object Label29: TLabel
+      Left = 10
+      Top = 10
+      Width = 188
+      Height = 13
+      Alignment = taCenter
+      Anchors = [akLeft, akTop, akRight]
+      AutoSize = False
+      Caption = 'CURVA DE CASTELJAU'
+      ExplicitWidth = 190
+    end
+    object Label30: TLabel
+      Left = 8
+      Top = 36
+      Width = 78
+      Height = 13
+      Caption = 'Precis'#227'o (pixels)'
+    end
+    object btCasteljau: TButton
+      Left = 10
+      Top = 85
+      Width = 190
+      Height = 25
+      Caption = 'CRIAR CURVA'
+      TabOrder = 0
+      OnClick = btCasteljauClick
+    end
+    object edCasteljau: TEdit
+      Left = 8
+      Top = 52
+      Width = 190
+      Height = 19
+      Alignment = taCenter
+      TabOrder = 1
+      Text = '5'
     end
   end
 end

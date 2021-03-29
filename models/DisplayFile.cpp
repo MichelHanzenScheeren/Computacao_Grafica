@@ -105,3 +105,14 @@ void DisplayFile::ApagarPoligono(int index) {
 	}
 }
 
+// CURVAS
+void DisplayFile::AplicarCasteljau(int index, int precisao) {
+	vector<Ponto2d> pontos = Poligonos[index].AplicarCasteljau(precisao);
+	if(pontos.size() != 0) {
+		int id = GerarNovoId();
+		Poligono poligono(id, "Casteljau " + IntToStr(id - 2));
+		poligono.AdicionarPontos(pontos);
+		AdicionarPoligono(poligono);
+	}
+}
+

@@ -139,6 +139,10 @@
             <DependentOn>models\Bresenham.h</DependentOn>
             <BuildOrder>9</BuildOrder>
         </CppCompile>
+        <CppCompile Include="models\Casteljau.cpp">
+            <DependentOn>models\Casteljau.h</DependentOn>
+            <BuildOrder>12</BuildOrder>
+        </CppCompile>
         <CppCompile Include="models\Clipping.cpp">
             <DependentOn>models\Clipping.h</DependentOn>
             <BuildOrder>11</BuildOrder>

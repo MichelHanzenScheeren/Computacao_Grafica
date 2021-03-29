@@ -8,6 +8,7 @@
 #include "Bresenham.h"
 #include "Matriz.h"
 #include "Clipping.h"
+#include "Casteljau.h"
 #include <vector>
 #include <Vcl.ExtCtrls.hpp>
 #include<Vcl.StdCtrls.hpp>
@@ -34,7 +35,7 @@ class Poligono
 		UnicodeString ToString();
 		void MostrarPontos(TListBox *);
 		void AtualizarEixoX(double, double);
-        void AtualizarEixoY(double, double);
+		void AtualizarEixoY(double, double);
 		void Transladar(double, double);
 		void Escalonar(double, double, bool);
 		void EscalonamentoHomogeneo(double, double);
@@ -44,6 +45,7 @@ class Poligono
 		void Refletir(int, int);
 		Ponto2d PontoCentral();
 		vector<Ponto2d> FiltrarPontosDoClipping(Janela);
+		vector<Ponto2d> AplicarCasteljau(int);
 };
 
 #endif

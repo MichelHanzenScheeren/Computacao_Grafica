@@ -208,3 +208,10 @@ vector<Ponto2d> Poligono::FiltrarPontosDoClipping(Janela clipping) {
 	return clip->ObterResultados();
 }
 
+// CURVAS
+vector<Ponto2d> Poligono::AplicarCasteljau(int precisao) {
+	Casteljau casteljau(Pontos);
+	return casteljau.CriarCurva(precisao);
+
+}
+

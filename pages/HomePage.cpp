@@ -237,8 +237,19 @@ void __fastcall TMyForm::btApagarClick(TObject *Sender) {
 		auxiliar.ApagarPoligono(index);
 		auxiliar.DesenharPoligonos(img->Canvas, rgTipoReta->ItemIndex);
 		auxiliar.MostrarPoligonosDesenhados(lbPoligonos);
-        lbPontos->Clear();
-    }
+		lbPontos->Clear();
+	}
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TMyForm::btCasteljauClick(TObject *Sender)
+{
+   int index = lbPoligonos->ItemIndex;
+	if(_poligonoValidoSelecionado(index, "criar curva")) {
+		auxiliar.AplicarCasteljau(index, StrToInt(edCasteljau->Text));
+        auxiliar.DesenharPoligonos(img->Canvas, rgTipoReta->ItemIndex);
+		auxiliar.MostrarPoligonosDesenhados(lbPoligonos);
+	}
 }
 //---------------------------------------------------------------------------
 

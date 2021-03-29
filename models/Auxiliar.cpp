@@ -178,3 +178,8 @@ void Auxiliar::ApagarPoligono(int index) {
 	 _display.ApagarPoligono(index);
 }
 
+// CURVAS
+void Auxiliar::AplicarCasteljau(int index, int precisao) {
+	_display.AplicarCasteljau(index, precisao);
+}
+

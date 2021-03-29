@@ -3,16 +3,16 @@
 	<Transactions>
     <Transaction>2021/02/23 19:01:50.000.606,=C:\Users\miche\Documents\Embarcadero\Studio\Projects\Project1PCH1.h</Transaction>
     <Transaction>2021/02/23 19:02:01.000.797,=C:\Users\miche\Documents\Embarcadero\Studio\Projects\Unit1.cpp</Transaction>
-    <Transaction>2021/02/26 14:31:26.000.824,=C:\Users\miche\Documents\Embarcadero\Studio\Projects\Unit1.cpp</Transaction>
     <Transaction>2021/02/26 14:31:26.000.701,=C:\Users\miche\Documents\Embarcadero\Studio\Projects\Project1PCH1.h</Transaction>
+    <Transaction>2021/02/26 14:31:26.000.824,=C:\Users\miche\Documents\Embarcadero\Studio\Projects\Unit1.cpp</Transaction>
     <Transaction>2021/02/26 14:32:16.000.276,C:\programming\novo\computacao_grafica\pages\HomePage.cpp=C:\Users\miche\Documents\Embarcadero\Studio\Projects\Unit1.cpp</Transaction>
     <Transaction>2021/02/26 14:32:16.000.276,C:\programming\novo\computacao_grafica\pages\HomePage.dfm=C:\Users\miche\Documents\Embarcadero\Studio\Projects\Unit1.dfm</Transaction>
     <Transaction>2021/02/26 14:32:16.000.276,C:\programming\novo\computacao_grafica\pages\HomePage.h=C:\Users\miche\Documents\Embarcadero\Studio\Projects\Unit1.h</Transaction>
     <Transaction>2021/02/26 14:32:32.000.683,C:\programming\novo\computacao_grafica\MyProjectPCH1.h=C:\Users\miche\Documents\Embarcadero\Studio\Projects\Project1PCH1.h</Transaction>
     <Transaction>2021/02/26 14:32:44.000.089,C:\programming\novo\computacao_grafica\MyProject.cbproj=C:\Users\miche\Documents\Embarcadero\Studio\Projects\Project1.cbproj</Transaction>
     <Transaction>2021/02/26 14:47:46.000.705,=C:\programming\novo\computacao_grafica\Unit1.cpp</Transaction>
-    <Transaction>2021/02/26 14:48:10.000.272,C:\programming\novo\computacao_grafica\models\Ponto2d.cpp=C:\programming\novo\computacao_grafica\Unit1.cpp</Transaction>
     <Transaction>2021/02/26 14:48:10.000.272,C:\programming\novo\computacao_grafica\models\Ponto2d.h=C:\programming\novo\computacao_grafica\Unit1.h</Transaction>
+    <Transaction>2021/02/26 14:48:10.000.272,C:\programming\novo\computacao_grafica\models\Ponto2d.cpp=C:\programming\novo\computacao_grafica\Unit1.cpp</Transaction>
     <Transaction>2021/02/26 14:48:58.000.407,=C:\programming\novo\computacao_grafica\Unit1.cpp</Transaction>
     <Transaction>2021/02/26 14:49:10.000.368,C:\programming\novo\computacao_grafica\models\Janela.cpp=C:\programming\novo\computacao_grafica\Unit1.cpp</Transaction>
     <Transaction>2021/02/26 14:49:10.000.368,C:\programming\novo\computacao_grafica\models\Janela.h=C:\programming\novo\computacao_grafica\Unit1.h</Transaction>
@@ -20,8 +20,8 @@
     <Transaction>2021/02/27 17:31:26.000.393,C:\programming\computacao_grafica\models\Poligono.cpp=C:\programming\computacao_grafica\Unit1.cpp</Transaction>
     <Transaction>2021/02/27 17:31:26.000.393,C:\programming\computacao_grafica\models\Poligono.h=C:\programming\computacao_grafica\Unit1.h</Transaction>
     <Transaction>2021/03/02 10:29:51.000.994,=C:\programming\computacao_grafica\Unit1.cpp</Transaction>
-    <Transaction>2021/03/02 10:30:23.000.587,C:\programming\computacao_grafica\Unit1.h=C:\programming\computacao_grafica\models\DisplayFile.h</Transaction>
     <Transaction>2021/03/02 10:30:23.000.587,C:\programming\computacao_grafica\Unit1.cpp=C:\programming\computacao_grafica\models\DisplayFile.cpp</Transaction>
+    <Transaction>2021/03/02 10:30:23.000.587,C:\programming\computacao_grafica\Unit1.h=C:\programming\computacao_grafica\models\DisplayFile.h</Transaction>
     <Transaction>2021/03/03 21:01:36.000.143,=C:\programming\computacao_grafica\Unit1.cpp</Transaction>
     <Transaction>2021/03/03 21:02:53.000.222,C:\programming\computacao_grafica\models\Auxiliar.cpp=C:\programming\computacao_grafica\Unit1.cpp</Transaction>
     <Transaction>2021/03/03 21:02:53.000.222,C:\programming\computacao_grafica\models\Auxiliar.h=C:\programming\computacao_grafica\Unit1.h</Transaction>
@@ -29,14 +29,17 @@
     <Transaction>2021/03/18 20:47:37.000.751,C:\programming\computacao_grafica\models\Dda.cpp=C:\programming\computacao_grafica\Unit1.cpp</Transaction>
     <Transaction>2021/03/18 20:47:37.000.751,C:\programming\computacao_grafica\models\Dda.h=C:\programming\computacao_grafica\Unit1.h</Transaction>
     <Transaction>2021/03/18 21:10:48.000.690,=C:\programming\computacao_grafica\Unit1.cpp</Transaction>
-    <Transaction>2021/03/18 21:11:01.000.012,C:\programming\computacao_grafica\models\Bresenham.h=C:\programming\computacao_grafica\Unit1.h</Transaction>
     <Transaction>2021/03/18 21:11:01.000.012,C:\programming\computacao_grafica\models\Bresenham.cpp=C:\programming\computacao_grafica\Unit1.cpp</Transaction>
+    <Transaction>2021/03/18 21:11:01.000.012,C:\programming\computacao_grafica\models\Bresenham.h=C:\programming\computacao_grafica\Unit1.h</Transaction>
     <Transaction>2021/03/18 21:26:23.000.742,=C:\programming\computacao_grafica\Unit1.cpp</Transaction>
-    <Transaction>2021/03/18 21:26:35.000.578,C:\programming\computacao_grafica\Unit1.h=C:\programming\computacao_grafica\models\Matriz.h</Transaction>
     <Transaction>2021/03/18 21:26:35.000.578,C:\programming\computacao_grafica\Unit1.cpp=C:\programming\computacao_grafica\models\Matriz.cpp</Transaction>
+    <Transaction>2021/03/18 21:26:35.000.578,C:\programming\computacao_grafica\Unit1.h=C:\programming\computacao_grafica\models\Matriz.h</Transaction>
     <Transaction>2021/03/20 18:15:04.000.341,=C:\programming\computacao_grafica\Unit1.cpp</Transaction>
-    <Transaction>2021/03/20 18:15:18.000.541,C:\programming\computacao_grafica\Unit1.h=C:\programming\computacao_grafica\models\Clipping.h</Transaction>
     <Transaction>2021/03/20 18:15:18.000.541,C:\programming\computacao_grafica\Unit1.cpp=C:\programming\computacao_grafica\models\Clipping.cpp</Transaction>
+    <Transaction>2021/03/20 18:15:18.000.541,C:\programming\computacao_grafica\Unit1.h=C:\programming\computacao_grafica\models\Clipping.h</Transaction>
+    <Transaction>2021/03/28 21:26:16.267,=C:\programming\computacao_grafica\Unit1.cpp</Transaction>
+    <Transaction>2021/03/28 21:26:33.628,C:\programming\computacao_grafica\models\Casteljau.h=C:\programming\computacao_grafica\Unit1.h</Transaction>
+    <Transaction>2021/03/28 21:26:33.628,C:\programming\computacao_grafica\models\Casteljau.cpp=C:\programming\computacao_grafica\Unit1.cpp</Transaction>
   </Transactions>
 	<ProjectSortOrder AutoSort="0" SortType="0">
     <File Path="models"/>
@@ -67,6 +70,9 @@
     <File Path="models\Clipping.cpp"/>
     <File Path="models\Clipping.cpp"/>
     <File Path="models\Clipping.h"/>
+    <File Path="models\Casteljau.cpp"/>
+    <File Path="models\Casteljau.cpp"/>
+    <File Path="models\Casteljau.h"/>
     <File Path="pages"/>
     <File Path="pages\HomePage.cpp"/>
     <File Path="pages\HomePage.cpp"/>
