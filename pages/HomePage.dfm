@@ -887,12 +887,12 @@ object MyForm: TMyForm
     end
     object edCasteljau: TEdit
       Left = 8
-      Top = 52
+      Top = 55
       Width = 190
       Height = 19
       Alignment = taCenter
       TabOrder = 1
-      Text = '5'
+      Text = '1'
     end
   end
 end
