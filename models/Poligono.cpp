@@ -209,9 +209,13 @@ vector<Ponto2d> Poligono::FiltrarPontosDoClipping(Janela clipping) {
 }
 
 // CURVAS
-vector<Ponto2d> Poligono::AplicarCasteljau(int precisao) {
+vector<Ponto2d> Poligono::AplicarCasteljau(double precisao) {
 	Casteljau casteljau(Pontos);
 	return casteljau.CriarCurva(precisao);
+}
 
+vector<Ponto2d> Poligono::AplicarHermite(double intervalo) {
+	Hermite hermite(Pontos);
+	return hermite.CriarCurva(intervalo);
 }
 

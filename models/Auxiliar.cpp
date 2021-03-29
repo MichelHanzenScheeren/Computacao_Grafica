@@ -179,7 +179,11 @@ void Auxiliar::ApagarPoligono(int index) {
 }
 
 // CURVAS
-void Auxiliar::AplicarCasteljau(int index, int precisao) {
+void Auxiliar::AplicarCasteljau(int index, double precisao) {
 	_display.AplicarCasteljau(index, precisao);
+}
+
+void Auxiliar::AplicarHermite(int index, double intervalo) {
+	_display.AplicarHermite(index, intervalo);
 }
 

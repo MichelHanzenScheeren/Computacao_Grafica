@@ -9,6 +9,7 @@
 #include "Matriz.h"
 #include "Clipping.h"
 #include "Casteljau.h"
+#include "Hermite.h"
 #include <vector>
 #include <Vcl.ExtCtrls.hpp>
 #include<Vcl.StdCtrls.hpp>
@@ -45,7 +46,8 @@ class Poligono
 		void Refletir(int, int);
 		Ponto2d PontoCentral();
 		vector<Ponto2d> FiltrarPontosDoClipping(Janela);
-		vector<Ponto2d> AplicarCasteljau(int);
+		vector<Ponto2d> AplicarCasteljau(double);
+		vector<Ponto2d> AplicarHermite(double);
 };
 
 #endif

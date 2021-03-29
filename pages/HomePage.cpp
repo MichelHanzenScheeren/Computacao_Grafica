@@ -242,12 +242,39 @@ void __fastcall TMyForm::btApagarClick(TObject *Sender) {
 }
 //---------------------------------------------------------------------------
 
+bool _poligonoValidoParaCurva(int index) {
+	if(index == -1) {
+		ShowMessage("Selecione um polígono para criação da curva.");
+		return false;
+	} else if(index == 0 || index == 1) {
+		ShowMessage("Não é possível criar uma curva dos eixos.");
+		return false;
+	} else if (index == 2) {
+		ShowMessage("Não é possível criar uma curva da área de clipping.");
+		return false;
+	}
+	return true;
+}
+//---------------------------------------------------------------------------
+
 void __fastcall TMyForm::btCasteljauClick(TObject *Sender)
 {
-   int index = lbPoligonos->ItemIndex;
-	if(_poligonoValidoSelecionado(index, "criar curva")) {
-		auxiliar.AplicarCasteljau(index, StrToInt(edCasteljau->Text));
-        auxiliar.DesenharPoligonos(img->Canvas, rgTipoReta->ItemIndex);
+	int index = lbPoligonos->ItemIndex;
+	if(_poligonoValidoParaCurva(index)) {
+		auxiliar.AplicarCasteljau(index, StrToFloat(edCasteljau->Text));
+		auxiliar.DesenharPoligonos(img->Canvas, rgTipoReta->ItemIndex);
+		auxiliar.MostrarPoligonosDesenhados(lbPoligonos);
+	}
+}
+//---------------------------------------------------------------------------
+
+
+void __fastcall TMyForm::btHermiteClick(TObject *Sender)
+{
+	int index = lbPoligonos->ItemIndex;
+	if(_poligonoValidoParaCurva(index)) {
+		auxiliar.AplicarHermite(index, StrToFloat(edHermite->Text));
+		auxiliar.DesenharPoligonos(img->Canvas, rgTipoReta->ItemIndex);
 		auxiliar.MostrarPoligonosDesenhados(lbPoligonos);
 	}
 }

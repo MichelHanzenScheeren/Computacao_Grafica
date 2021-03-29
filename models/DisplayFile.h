@@ -32,7 +32,8 @@ class DisplayFile
         void PintarPontoCentral(Ponto2d, TCanvas *, Janela, Janela);
 		void AplicarClipping(Janela);
 		void ApagarPoligono(int);
-        void AplicarCasteljau(int, int);
+		void AplicarCasteljau(int, double);
+        void AplicarHermite(int, double);
 };
 
 #endif

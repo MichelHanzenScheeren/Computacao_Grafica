@@ -99,6 +99,11 @@ __published:	// IDE-managed Components
 	TEdit *edCasteljau;
 	TStaticText *StaticText1;
 	TLabel *Label30;
+	TPanel *Panel14;
+	TLabel *Label31;
+	TLabel *Label32;
+	TEdit *edHermite;
+	TButton *btHermite;
 	void __fastcall imgMouseMove(TObject *Sender, TShiftState Shift, int X, int Y);
 	void __fastcall lbPoligonosClick(TObject *Sender);
 	void __fastcall btDesenharPoligonoClick(TObject *Sender);
@@ -122,6 +127,7 @@ __published:	// IDE-managed Components
 	void __fastcall btnClippingClick(TObject *Sender);
 	void __fastcall btApagarClick(TObject *Sender);
 	void __fastcall btCasteljauClick(TObject *Sender);
+	void __fastcall btHermiteClick(TObject *Sender);
 
 private:	// User declarations
 public:		// User declarations

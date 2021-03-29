@@ -155,6 +155,10 @@
             <DependentOn>models\DisplayFile.h</DependentOn>
             <BuildOrder>6</BuildOrder>
         </CppCompile>
+        <CppCompile Include="models\Hermite.cpp">
+            <DependentOn>models\Hermite.h</DependentOn>
+            <BuildOrder>13</BuildOrder>
+        </CppCompile>
         <CppCompile Include="models\Janela.cpp">
             <DependentOn>models\Janela.h</DependentOn>
             <BuildOrder>4</BuildOrder>

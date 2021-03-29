@@ -106,11 +106,21 @@ void DisplayFile::ApagarPoligono(int index) {
 }
 
 // CURVAS
-void DisplayFile::AplicarCasteljau(int index, int precisao) {
+void DisplayFile::AplicarCasteljau(int index, double precisao) {
 	vector<Ponto2d> pontos = Poligonos[index].AplicarCasteljau(precisao);
 	if(pontos.size() != 0) {
 		int id = GerarNovoId();
 		Poligono poligono(id, "Casteljau " + IntToStr(id - 3));
+		poligono.AdicionarPontos(pontos);
+		AdicionarPoligono(poligono);
+	}
+}
+
+void DisplayFile::AplicarHermite(int index, double intervalo) {
+	vector<Ponto2d> pontos = Poligonos[index].AplicarHermite(intervalo);
+	if(pontos.size() != 0) {
+		int id = GerarNovoId();
+		Poligono poligono(id, "Hermite " + IntToStr(id - 3));
 		poligono.AdicionarPontos(pontos);
 		AdicionarPoligono(poligono);
 	}

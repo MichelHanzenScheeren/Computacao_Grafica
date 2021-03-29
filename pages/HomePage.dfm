@@ -895,4 +895,56 @@ object MyForm: TMyForm
       Text = '1'
     end
   end
+  object Panel14: TPanel
+    Left = 250
+    Top = 560
+    Width = 210
+    Height = 120
+    BevelOuter = bvNone
+    BorderStyle = bsSingle
+    Caption = 'Panel1'
+    Ctl3D = False
+    ParentCtl3D = False
+    ShowCaption = False
+    TabOrder = 15
+    DesignSize = (
+      208
+      118)
+    object Label31: TLabel
+      Left = 10
+      Top = 10
+      Width = 188
+      Height = 13
+      Alignment = taCenter
+      Anchors = [akLeft, akTop, akRight]
+      AutoSize = False
+      Caption = 'CURVA DE HERMITE'
+      ExplicitWidth = 190
+    end
+    object Label32: TLabel
+      Left = 8
+      Top = 36
+      Width = 123
+      Height = 13
+      Caption = 'Precis'#227'o (intervalo de "t")'
+    end
+    object edHermite: TEdit
+      Left = 8
+      Top = 55
+      Width = 190
+      Height = 19
+      Alignment = taCenter
+      TabOrder = 0
+      Text = '0.1'
+    end
+    object btHermite: TButton
+      Left = 10
+      Top = 85
+      Width = 190
+      Height = 25
+      Caption = 'CRIAR CURVA'
+      TabOrder = 1
+      OnClick = btHermiteClick
+    end
+  end
 end
