@@ -49,7 +49,10 @@ class Auxiliar
 		void PintarPontoCentral(TCanvas *, Ponto2d);
 		void AplicarClipping();
 		void ApagarPoligono(int);
+		// CURVAS
 		void AplicarCasteljau(int, double);
 		void AplicarHermite(int, double);
+		void AplicarBSpline(int, double);
+		void AplicarBSplineFwDif(int, double);
 };
 #endif

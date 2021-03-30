@@ -187,3 +187,10 @@ void Auxiliar::AplicarHermite(int index, double intervalo) {
 	_display.AplicarHermite(index, intervalo);
 }
 
+void Auxiliar::AplicarBSpline(int index, double intervalo) {
+	_display.AplicarBSpline(index, intervalo);
+}
+
+void Auxiliar::AplicarBSplineFwDif(int index, double intervalo) {
+	_display.AplicarBSplineFwDif(index, intervalo);
+}

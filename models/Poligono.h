@@ -10,6 +10,7 @@
 #include "Clipping.h"
 #include "Casteljau.h"
 #include "Hermite.h"
+#include "BSpline.h"
 #include <vector>
 #include <Vcl.ExtCtrls.hpp>
 #include<Vcl.StdCtrls.hpp>
@@ -48,6 +49,8 @@ class Poligono
 		vector<Ponto2d> FiltrarPontosDoClipping(Janela);
 		vector<Ponto2d> AplicarCasteljau(double);
 		vector<Ponto2d> AplicarHermite(double);
+		vector<Ponto2d> AplicarBSpline(double);
+		vector<Ponto2d> AplicarBSplineFwDif(double);
 };
 
 #endif

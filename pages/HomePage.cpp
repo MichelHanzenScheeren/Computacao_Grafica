@@ -280,3 +280,25 @@ void __fastcall TMyForm::btHermiteClick(TObject *Sender)
 }
 //---------------------------------------------------------------------------
 
+void __fastcall TMyForm::btBSplineClick(TObject *Sender)
+{
+	int index = lbPoligonos->ItemIndex;
+	if(_poligonoValidoParaCurva(index)) {
+		auxiliar.AplicarBSpline(index, StrToFloat(edBSpline->Text));
+		auxiliar.DesenharPoligonos(img->Canvas, rgTipoReta->ItemIndex);
+		auxiliar.MostrarPoligonosDesenhados(lbPoligonos);
+	}
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TMyForm::btForwardDifferenceClick(TObject *Sender)
+{
+    int index = lbPoligonos->ItemIndex;
+	if(_poligonoValidoParaCurva(index)) {
+		auxiliar.AplicarBSplineFwDif(index, StrToFloat(edBSpline->Text));
+		auxiliar.DesenharPoligonos(img->Canvas, rgTipoReta->ItemIndex);
+		auxiliar.MostrarPoligonosDesenhados(lbPoligonos);
+	}
+}
+//---------------------------------------------------------------------------
+

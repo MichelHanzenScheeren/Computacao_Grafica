@@ -126,3 +126,24 @@ void DisplayFile::AplicarHermite(int index, double intervalo) {
 	}
 }
 
+void DisplayFile::AplicarBSpline(int index, double intervalo) {
+	vector<Ponto2d> pontos = Poligonos[index].AplicarBSpline(intervalo);
+	if(pontos.size() != 0) {
+		int id = GerarNovoId();
+		Poligono poligono(id, "BSpline " + IntToStr(id - 3));
+		poligono.AdicionarPontos(pontos);
+		AdicionarPoligono(poligono);
+	}
+}
+
+void DisplayFile::AplicarBSplineFwDif(int index, double intervalo) {
+	vector<Ponto2d> pontos = Poligonos[index].AplicarBSplineFwDif(intervalo);
+	if(pontos.size() != 0) {
+		int id = GerarNovoId();
+		Poligono poligono(id, "BSplineFwDif " + IntToStr(id - 3));
+		poligono.AdicionarPontos(pontos);
+		AdicionarPoligono(poligono);
+	}
+}
+
+

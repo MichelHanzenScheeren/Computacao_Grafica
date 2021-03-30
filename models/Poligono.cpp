@@ -219,3 +219,12 @@ vector<Ponto2d> Poligono::AplicarHermite(double intervalo) {
 	return hermite.CriarCurva(intervalo);
 }
 
+vector<Ponto2d> Poligono::AplicarBSpline(double intervalo) {
+	BSpline bSpline(Pontos);
+	return bSpline.CriarCurva(intervalo);
+}
+
+vector<Ponto2d> Poligono::AplicarBSplineFwDif(double intervalo) {
+	BSpline bSpline(Pontos);
+	return bSpline.CriarCurvaForwardDifference(intervalo);
+}

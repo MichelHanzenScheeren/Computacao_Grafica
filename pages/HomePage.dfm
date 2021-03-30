@@ -935,7 +935,7 @@ object MyForm: TMyForm
       Height = 19
       Alignment = taCenter
       TabOrder = 0
-      Text = '0.1'
+      Text = '0.01'
     end
     object btHermite: TButton
       Left = 10
@@ -945,6 +945,110 @@ object MyForm: TMyForm
       Caption = 'CRIAR CURVA'
       TabOrder = 1
       OnClick = btHermiteClick
+    end
+  end
+  object Panel15: TPanel
+    Left = 480
+    Top = 560
+    Width = 210
+    Height = 120
+    BevelOuter = bvNone
+    BorderStyle = bsSingle
+    Caption = 'Panel1'
+    Ctl3D = False
+    ParentCtl3D = False
+    ShowCaption = False
+    TabOrder = 16
+    DesignSize = (
+      208
+      118)
+    object Label33: TLabel
+      Left = 10
+      Top = 10
+      Width = 188
+      Height = 13
+      Alignment = taCenter
+      Anchors = [akLeft, akTop, akRight]
+      AutoSize = False
+      Caption = 'CURVA B-SPLINE'
+      ExplicitWidth = 190
+    end
+    object Label34: TLabel
+      Left = 8
+      Top = 36
+      Width = 123
+      Height = 13
+      Caption = 'Precis'#227'o (intervalo de "t")'
+    end
+    object edBSpline: TEdit
+      Left = 8
+      Top = 55
+      Width = 190
+      Height = 19
+      Alignment = taCenter
+      TabOrder = 0
+      Text = '0.01'
+    end
+    object btBSpline: TButton
+      Left = 10
+      Top = 85
+      Width = 190
+      Height = 25
+      Caption = 'CRIAR CURVA'
+      TabOrder = 1
+      OnClick = btBSplineClick
+    end
+  end
+  object Panel16: TPanel
+    Left = 710
+    Top = 560
+    Width = 210
+    Height = 120
+    BevelOuter = bvNone
+    BorderStyle = bsSingle
+    Caption = 'Panel1'
+    Ctl3D = False
+    ParentCtl3D = False
+    ShowCaption = False
+    TabOrder = 17
+    DesignSize = (
+      208
+      118)
+    object Label35: TLabel
+      Left = 10
+      Top = 10
+      Width = 188
+      Height = 13
+      Alignment = taCenter
+      Anchors = [akLeft, akTop, akRight]
+      AutoSize = False
+      Caption = 'B-SPLINE + FORWARD DIFFERENCE'
+      ExplicitWidth = 190
+    end
+    object Label36: TLabel
+      Left = 8
+      Top = 36
+      Width = 123
+      Height = 13
+      Caption = 'Precis'#227'o (intervalo de "t")'
+    end
+    object Edit1: TEdit
+      Left = 8
+      Top = 55
+      Width = 190
+      Height = 19
+      Alignment = taCenter
+      TabOrder = 0
+      Text = '0.01'
+    end
+    object btForwardDifference: TButton
+      Left = 10
+      Top = 85
+      Width = 190
+      Height = 25
+      Caption = 'CRIAR CURVA'
+      TabOrder = 1
+      OnClick = btForwardDifferenceClick
     end
   end
 end
