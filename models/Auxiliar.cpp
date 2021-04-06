@@ -187,6 +187,10 @@ void Auxiliar::AplicarHermite(int index, double intervalo) {
 	_display.AplicarHermite(index, intervalo);
 }
 
+void Auxiliar::AplicarBezier(int index, double intervalo) {
+	_display.AplicarBezier(index, intervalo);
+}
+
 void Auxiliar::AplicarBSpline(int index, double intervalo) {
 	_display.AplicarBSpline(index, intervalo);
 }

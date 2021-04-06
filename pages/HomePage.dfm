@@ -870,7 +870,7 @@ object MyForm: TMyForm
       ExplicitWidth = 190
     end
     object Label30: TLabel
-      Left = 8
+      Left = 10
       Top = 36
       Width = 78
       Height = 13
@@ -886,7 +886,7 @@ object MyForm: TMyForm
       OnClick = btCasteljauClick
     end
     object edCasteljau: TEdit
-      Left = 8
+      Left = 10
       Top = 55
       Width = 190
       Height = 19
@@ -948,7 +948,7 @@ object MyForm: TMyForm
     end
   end
   object Panel15: TPanel
-    Left = 480
+    Left = 710
     Top = 560
     Width = 210
     Height = 120
@@ -974,14 +974,14 @@ object MyForm: TMyForm
       ExplicitWidth = 190
     end
     object Label34: TLabel
-      Left = 8
+      Left = 10
       Top = 36
       Width = 123
       Height = 13
       Caption = 'Precis'#227'o (intervalo de "t")'
     end
     object edBSpline: TEdit
-      Left = 8
+      Left = 10
       Top = 55
       Width = 190
       Height = 19
@@ -1000,7 +1000,7 @@ object MyForm: TMyForm
     end
   end
   object Panel16: TPanel
-    Left = 710
+    Left = 940
     Top = 560
     Width = 210
     Height = 120
@@ -1026,14 +1026,14 @@ object MyForm: TMyForm
       ExplicitWidth = 190
     end
     object Label36: TLabel
-      Left = 8
+      Left = 10
       Top = 36
       Width = 123
       Height = 13
       Caption = 'Precis'#227'o (intervalo de "t")'
     end
     object Edit1: TEdit
-      Left = 8
+      Left = 10
       Top = 55
       Width = 190
       Height = 19
@@ -1049,6 +1049,58 @@ object MyForm: TMyForm
       Caption = 'CRIAR CURVA'
       TabOrder = 1
       OnClick = btForwardDifferenceClick
+    end
+  end
+  object Panel17: TPanel
+    Left = 480
+    Top = 560
+    Width = 210
+    Height = 120
+    BevelOuter = bvNone
+    BorderStyle = bsSingle
+    Caption = 'Panel1'
+    Ctl3D = False
+    ParentCtl3D = False
+    ShowCaption = False
+    TabOrder = 18
+    DesignSize = (
+      208
+      118)
+    object Label37: TLabel
+      Left = 10
+      Top = 10
+      Width = 188
+      Height = 13
+      Alignment = taCenter
+      Anchors = [akLeft, akTop, akRight]
+      AutoSize = False
+      Caption = 'CURVA DE B'#201'ZIER'
+      ExplicitWidth = 190
+    end
+    object Label38: TLabel
+      Left = 10
+      Top = 36
+      Width = 123
+      Height = 13
+      Caption = 'Precis'#227'o (intervalo de "t")'
+    end
+    object edBezier: TEdit
+      Left = 10
+      Top = 55
+      Width = 190
+      Height = 19
+      Alignment = taCenter
+      TabOrder = 0
+      Text = '0.01'
+    end
+    object btBezier: TButton
+      Left = 10
+      Top = 85
+      Width = 190
+      Height = 25
+      Caption = 'CRIAR CURVA'
+      TabOrder = 1
+      OnClick = btBezierClick
     end
   end
 end

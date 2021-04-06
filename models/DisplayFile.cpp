@@ -106,44 +106,37 @@ void DisplayFile::ApagarPoligono(int index) {
 }
 
 // CURVAS
-void DisplayFile::AplicarCasteljau(int index, double precisao) {
-	vector<Ponto2d> pontos = Poligonos[index].AplicarCasteljau(precisao);
-	if(pontos.size() != 0) {
+void DisplayFile::_registrarCurva(vector<Ponto2d> *pontos, UnicodeString nome) {
+	if(pontos->size() != 0) {
 		int id = GerarNovoId();
-		Poligono poligono(id, "Casteljau " + IntToStr(id - 3));
-		poligono.AdicionarPontos(pontos);
+		Poligono poligono(id, nome + IntToStr(id - 3));
+		poligono.AdicionarPontos(*pontos);
 		AdicionarPoligono(poligono);
 	}
+}
+void DisplayFile::AplicarCasteljau(int index, double precisao) {
+	vector<Ponto2d> pontos = Poligonos[index].AplicarCasteljau(precisao);
+	_registrarCurva(&pontos, "Casteljau ");
 }
 
 void DisplayFile::AplicarHermite(int index, double intervalo) {
 	vector<Ponto2d> pontos = Poligonos[index].AplicarHermite(intervalo);
-	if(pontos.size() != 0) {
-		int id = GerarNovoId();
-		Poligono poligono(id, "Hermite " + IntToStr(id - 3));
-		poligono.AdicionarPontos(pontos);
-		AdicionarPoligono(poligono);
-	}
+	_registrarCurva(&pontos, "Hermite ");
+}
+
+void DisplayFile::AplicarBezier(int index, double intervalo) {
+	vector<Ponto2d> pontos = Poligonos[index].AplicarBezier(intervalo);
+	_registrarCurva(&pontos, "Bezier ");
 }
 
 void DisplayFile::AplicarBSpline(int index, double intervalo) {
 	vector<Ponto2d> pontos = Poligonos[index].AplicarBSpline(intervalo);
-	if(pontos.size() != 0) {
-		int id = GerarNovoId();
-		Poligono poligono(id, "BSpline " + IntToStr(id - 3));
-		poligono.AdicionarPontos(pontos);
-		AdicionarPoligono(poligono);
-	}
+	_registrarCurva(&pontos, "BSpline ");
 }
 
 void DisplayFile::AplicarBSplineFwDif(int index, double intervalo) {
 	vector<Ponto2d> pontos = Poligonos[index].AplicarBSplineFwDif(intervalo);
-	if(pontos.size() != 0) {
-		int id = GerarNovoId();
-		Poligono poligono(id, "BSplineFwDif " + IntToStr(id - 3));
-		poligono.AdicionarPontos(pontos);
-		AdicionarPoligono(poligono);
-	}
+	_registrarCurva(&pontos, "BSplineFwDif ");
 }
 
 

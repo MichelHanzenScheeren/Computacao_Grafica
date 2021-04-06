@@ -32,9 +32,11 @@ class DisplayFile
         void PintarPontoCentral(Ponto2d, TCanvas *, Janela, Janela);
 		void AplicarClipping(Janela);
 		void ApagarPoligono(int);
-        // CURVAS
+		// CURVAS
+        void _registrarCurva(vector<Ponto2d> *, UnicodeString);
 		void AplicarCasteljau(int, double);
 		void AplicarHermite(int, double);
+        void AplicarBezier(int, double);
 		void AplicarBSpline(int, double);
 		void AplicarBSplineFwDif(int, double);
 };

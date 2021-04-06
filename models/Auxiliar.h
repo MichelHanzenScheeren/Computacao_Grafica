@@ -52,6 +52,7 @@ class Auxiliar
 		// CURVAS
 		void AplicarCasteljau(int, double);
 		void AplicarHermite(int, double);
+        void AplicarBezier(int, double);
 		void AplicarBSpline(int, double);
 		void AplicarBSplineFwDif(int, double);
 };

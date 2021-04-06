@@ -21,7 +21,7 @@ vector<Ponto2d> BSpline::CriarCurva(double intervalo) {
 	};
 	for (int i = 0; i < 4; i++) {
 		for (int j = 0; j < 4; j++) {
-			Mbs[i][j] /= 6;
+			Mbs[i][j] = (double)Mbs[i][j] / 6;
 		}
 	}
 	for (int i = 3; i < _pontos.size(); i++) {

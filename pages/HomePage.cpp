@@ -279,6 +279,16 @@ void __fastcall TMyForm::btHermiteClick(TObject *Sender)
 	}
 }
 //---------------------------------------------------------------------------
+void __fastcall TMyForm::btBezierClick(TObject *Sender)
+{
+	int index = lbPoligonos->ItemIndex;
+	if(_poligonoValidoParaCurva(index)) {
+		auxiliar.AplicarBezier(index, StrToFloat(edBezier->Text));
+		auxiliar.DesenharPoligonos(img->Canvas, rgTipoReta->ItemIndex);
+		auxiliar.MostrarPoligonosDesenhados(lbPoligonos);
+	}
+}
+//---------------------------------------------------------------------------
 
 void __fastcall TMyForm::btBSplineClick(TObject *Sender)
 {

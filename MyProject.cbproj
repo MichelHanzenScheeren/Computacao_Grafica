@@ -135,6 +135,10 @@
             <DependentOn>models\Auxiliar.h</DependentOn>
             <BuildOrder>7</BuildOrder>
         </CppCompile>
+        <CppCompile Include="models\Bezier.cpp">
+            <DependentOn>models\Bezier.h</DependentOn>
+            <BuildOrder>15</BuildOrder>
+        </CppCompile>
         <CppCompile Include="models\Bresenham.cpp">
             <DependentOn>models\Bresenham.h</DependentOn>
             <BuildOrder>9</BuildOrder>
