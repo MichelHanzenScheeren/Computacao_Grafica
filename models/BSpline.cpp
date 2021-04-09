@@ -1,7 +1,5 @@
 //---------------------------------------------------------------------------
-
 #pragma hdrstop
-
 #include "BSpline.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
@@ -21,7 +19,7 @@ vector<Ponto2d> BSpline::CriarCurva(double intervalo) {
 	};
 	for (int i = 0; i < 4; i++) {
 		for (int j = 0; j < 4; j++) {
-			Mbs[i][j] = (double)Mbs[i][j] / 6;
+			Mbs[i][j] /= 6;
 		}
 	}
 	for (int i = 3; i < _pontos.size(); i++) {
@@ -35,13 +33,13 @@ vector<Ponto2d> BSpline::CriarCurva(double intervalo) {
 		vector<vector<double>> MGbsx = Matriz::Multiplicar(Mbs, Gbsx);
 		vector<vector<double>> MGbsy = Matriz::Multiplicar(Mbs, Gbsy);
 
-		double j = 0.0;
-		while (j <= 1.0) {
-			vector<vector<double>> T = {{pow(j, 3), pow(j, 2), j, 1}};
+		double t = 0.0;
+		while (t <= 1.0) {
+			vector<vector<double>> T = {{pow(t, 3), pow(t, 2), t, 1}};
 			vector matrizX = Matriz::Multiplicar(T, MGbsx);
 			vector matrizY = Matriz::Multiplicar(T, MGbsy);
 			_curva.push_back(Ponto2d(matrizX[0][0], matrizY[0][0]));
-			j += intervalo;
+			t += intervalo;
 		}
 	}
 	return _curva;
@@ -72,7 +70,9 @@ vector<Ponto2d> BSpline::CriarCurvaForwardDifference(double intervalo) {
 		vector<vector<double>> MGbsx = Matriz::Multiplicar(Mbs, Gbsx);
 		vector<vector<double>> MGbsy = Matriz::Multiplicar(Mbs, Gbsy);
 
-		double t3 = pow(intervalo, 3), t2 = pow(intervalo, 2), t = intervalo;
+		double t = intervalo;
+		double t2 = pow(intervalo, 2);
+		double t3 = pow(intervalo, 3);
 
 		double x = MGbsx[3][0];
 		double dx = MGbsx[0][0] * t3 + MGbsx[1][0] * t2 + MGbsx[2][0] * t;
@@ -84,9 +84,9 @@ vector<Ponto2d> BSpline::CriarCurvaForwardDifference(double intervalo) {
 		double d2y = 6 * MGbsy[0][0] * t3 + 2 * MGbsy[1][0] * t2;
 		double d3y = 6 * MGbsy[0][0] * t3;
 
-		_curva.push_back(Ponto2d(x, y));
 		double j = 0.0;
 		while (j <= 1.0) {
+			_curva.push_back(Ponto2d(x, y));
 			j += intervalo;
 			x += dx;
 			dx += d2x;
@@ -94,7 +94,6 @@ vector<Ponto2d> BSpline::CriarCurvaForwardDifference(double intervalo) {
 			y += dy;
 			dy += d2y;
 			d2y += d3y;
-			_curva.push_back(Ponto2d(x, y));
 		}
 	}
 	return _curva;

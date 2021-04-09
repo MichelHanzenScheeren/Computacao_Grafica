@@ -46,9 +46,9 @@
     <Transaction>2021/03/29 20:03:33.000.421,=C:\programming\computacao_grafica\Unit1.cpp</Transaction>
     <Transaction>2021/03/29 20:03:44.000.265,C:\programming\computacao_grafica\Unit1.h=C:\programming\computacao_grafica\models\BSpline.h</Transaction>
     <Transaction>2021/03/29 20:03:44.000.265,C:\programming\computacao_grafica\Unit1.cpp=C:\programming\computacao_grafica\models\BSpline.cpp</Transaction>
-    <Transaction>2021/04/05 20:54:42.982,=C:\programming\computacao_grafica\Unit1.cpp</Transaction>
-    <Transaction>2021/04/05 20:54:54.778,C:\programming\computacao_grafica\models\Bezier.h=C:\programming\computacao_grafica\Unit1.h</Transaction>
-    <Transaction>2021/04/05 20:54:54.778,C:\programming\computacao_grafica\models\Bezier.cpp=C:\programming\computacao_grafica\Unit1.cpp</Transaction>
+    <Transaction>2021/04/05 20:54:42.000.982,=C:\programming\computacao_grafica\Unit1.cpp</Transaction>
+    <Transaction>2021/04/05 20:54:54.000.778,C:\programming\computacao_grafica\models\Bezier.h=C:\programming\computacao_grafica\Unit1.h</Transaction>
+    <Transaction>2021/04/05 20:54:54.000.778,C:\programming\computacao_grafica\models\Bezier.cpp=C:\programming\computacao_grafica\Unit1.cpp</Transaction>
   </Transactions>
 	<ProjectSortOrder AutoSort="0" SortType="0">
     <File Path="models"/>

@@ -33,13 +33,13 @@ vector<Ponto2d> Hermite::CriarCurva(double intervalo) {
 	vector<vector<double>> MGhx = Matriz::Multiplicar(Mh, Ghx);
 	vector<vector<double>> MGhy = Matriz::Multiplicar(Mh, Ghy);
 
-	double i = 0.0;
-	while (i <= 1.0) {
-		vector<vector<double>> T = {{pow(i, 3), pow(i, 2), i, 1}};
+	double t = 0.0;
+	while (t <= 1.0) {
+		vector<vector<double>> T = {{pow(t, 3), pow(t, 2), t, 1}};
 		vector<vector<double>> resultadoX = Matriz::Multiplicar(T, MGhx);
 		vector<vector<double>> resultadoY = Matriz::Multiplicar(T, MGhy);
 		_curva.push_back(Ponto2d(resultadoX[0][0], resultadoY[0][0]));
-		i += intervalo;
+		t += intervalo;
 	}
 	return _curva;
 }
