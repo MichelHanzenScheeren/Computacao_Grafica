@@ -54,7 +54,6 @@ __fastcall TMyForm::TMyForm(TComponent* Owner)
 	auxiliar.SalvarEixos();
 	auxiliar.MostrarPoligonosDesenhados(lbPoligonos);
 	_atualizarWindow();
-
 }
 //---------------------------------------------------------------------------
 

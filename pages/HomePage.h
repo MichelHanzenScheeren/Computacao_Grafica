@@ -147,6 +147,8 @@ __published:	// IDE-managed Components
 	void __fastcall btForwardDifferenceClick(TObject *Sender);
 	void __fastcall btBezierClick(TObject *Sender);
 
+
+
 private:	// User declarations
 public:		// User declarations
 	__fastcall TMyForm(TComponent* Owner);
