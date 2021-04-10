@@ -169,7 +169,8 @@ void __fastcall TMyForm::btTransladarClick(TObject *Sender) {
 	if (_poligonoValidoSelecionado(index, "transladar")) {
 		double dx = StrToFloat(edDeslocamentoX->Text);
 		double dy = StrToFloat(edDeslocamentoY->Text);
-		auxiliar.Transladar(index, dx, dy);
+		double dz = StrToFloat(edDeslocamentoZ->Text);
+		auxiliar.Transladar(index, dx, dy, dz);
 		_redesenharEAtualizarPontosDoPoligono(index);
 	}
 }
@@ -308,6 +309,20 @@ void __fastcall TMyForm::btForwardDifferenceClick(TObject *Sender)
 		auxiliar.DesenharPoligonos(img->Canvas, rgTipoReta->ItemIndex);
 		auxiliar.MostrarPoligonosDesenhados(lbPoligonos);
 	}
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TMyForm::btLerArquivoClick(TObject *Sender)
+{
+	char caminhoArquivo[50];
+	if(rg3d->ItemIndex == 0) {
+	   sprintf(caminhoArquivo, "../../arquivos/piramide.txt");
+	} else {
+    	sprintf(caminhoArquivo, "../../arquivos/cubo.txt");
+	}
+	auxiliar.LerArquivo(caminhoArquivo);
+    auxiliar.DesenharPoligonos(img->Canvas, rgTipoReta->ItemIndex);
+	auxiliar.MostrarPoligonosDesenhados(lbPoligonos);
 }
 //---------------------------------------------------------------------------
 

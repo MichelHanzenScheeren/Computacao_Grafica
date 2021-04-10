@@ -131,6 +131,10 @@
         <BCC_PCHName_Clang>MyProjectPCH1.h</BCC_PCHName_Clang>
     </PropertyGroup>
     <ItemGroup>
+        <CppCompile Include="models\Arquivo.cpp">
+            <DependentOn>models\Arquivo.h</DependentOn>
+            <BuildOrder>17</BuildOrder>
+        </CppCompile>
         <CppCompile Include="models\Auxiliar.cpp">
             <DependentOn>models\Auxiliar.h</DependentOn>
             <BuildOrder>7</BuildOrder>
@@ -175,6 +179,10 @@
             <DependentOn>models\Matriz.h</DependentOn>
             <BuildOrder>10</BuildOrder>
         </CppCompile>
+        <CppCompile Include="models\Poliedro.cpp">
+            <DependentOn>models\Poliedro.h</DependentOn>
+            <BuildOrder>18</BuildOrder>
+        </CppCompile>
         <CppCompile Include="models\Poligono.cpp">
             <DependentOn>models\Poligono.h</DependentOn>
             <BuildOrder>5</BuildOrder>
@@ -182,6 +190,10 @@
         <CppCompile Include="models\Ponto2d.cpp">
             <DependentOn>models\Ponto2d.h</DependentOn>
             <BuildOrder>3</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="models\Ponto3d.cpp">
+            <DependentOn>models\Ponto3d.h</DependentOn>
+            <BuildOrder>16</BuildOrder>
         </CppCompile>
         <CppCompile Include="MyProject.cpp">
             <BuildOrder>0</BuildOrder>

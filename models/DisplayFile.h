@@ -3,7 +3,10 @@
 #define DisplayFileH
 
 #include "Poligono.h"
+#include "Poliedro.h"
 #include "Janela.h"
+#include "Ponto2d.h"
+#include "Ponto3d.h"
 #include <vector>
 #include <Vcl.ExtCtrls.hpp>
 #include<Vcl.StdCtrls.hpp>
@@ -24,7 +27,7 @@ class DisplayFile
 		void GerarPontosDoCirculo(Ponto2d);
 		void MostrarPontosDeUmPoligono(int, TListBox *);
         void AtualizarEixos(Janela mundo);
-		void Transladar(int, double, double);
+		void Transladar(int, double, double, double);
 		void Escalonar(int, double, double, bool);
 		void Rotacionar(int, double, bool);
 		void Refletir(int, int, int);
@@ -39,6 +42,8 @@ class DisplayFile
         void AplicarBezier(int, double);
 		void AplicarBSpline(int, double);
 		void AplicarBSplineFwDif(int, double);
+		// 3D
+		void CriarPoliedro(vector<vector<double>>);
 };
 
 #endif

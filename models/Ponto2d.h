@@ -4,15 +4,16 @@
 #include "Janela.h"
 #include "Matriz.h"
 #include<Vcl.StdCtrls.hpp>
+#include <stdio.h>
 #include <vector>
 using std::vector;
 //---------------------------------------------------------------------------
+
 class Ponto2d
 {
 	public:
 		double X;
 		double Y;
-
 		Ponto2d(double, double);
         void Editar(double, double);
 		int XMundoParaViewport(Janela, Janela);
@@ -25,5 +26,11 @@ class Ponto2d
         void RotacaoHomogenea(vector<vector<double>> homogenea);
 		void Refletir(int, int);
 		short ObterValorDeClipping(Janela);
+
+        public: virtual ~Ponto2d() {}
+        template<typename T>
+		bool IsTypeOf() {
+			return (dynamic_cast<T*>(this) != NULL);
+		}
 };
 #endif

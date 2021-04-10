@@ -119,6 +119,14 @@ __published:	// IDE-managed Components
 	TLabel *Label38;
 	TEdit *edBezier;
 	TButton *btBezier;
+	TEdit *edDeslocamentoZ;
+	TLabel *Label39;
+	TEdit *edFatorZ;
+	TLabel *Label40;
+	TPanel *Panel18;
+	TLabel *Label41;
+	TRadioGroup *rg3d;
+	TButton *btLerArquivo;
 	void __fastcall imgMouseMove(TObject *Sender, TShiftState Shift, int X, int Y);
 	void __fastcall lbPoligonosClick(TObject *Sender);
 	void __fastcall btDesenharPoligonoClick(TObject *Sender);
@@ -146,6 +154,7 @@ __published:	// IDE-managed Components
 	void __fastcall btBSplineClick(TObject *Sender);
 	void __fastcall btForwardDifferenceClick(TObject *Sender);
 	void __fastcall btBezierClick(TObject *Sender);
+	void __fastcall btLerArquivoClick(TObject *Sender);
 
 
 

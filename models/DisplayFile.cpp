@@ -32,8 +32,10 @@ void DisplayFile::Desenhar(
 
 void DisplayFile::MostrarPoligonosDesenhados(TListBox *listbox) {
 	listbox->Clear();
-	for(int i = 0; i < Poligonos.size(); i++)
+	for(int i = 0; i < Poligonos.size(); i++) {
 		listbox->Items->Add(Poligonos[i].ToString());
+	}
+
 }
 
 void DisplayFile::MostrarPontosDeUmPoligono(int posicao, TListBox *listbox) {
@@ -50,8 +52,8 @@ void DisplayFile::AtualizarEixos(Janela mundo) {
 	Poligonos[1].AtualizarEixoY(mundo.Ymin, mundo.Ymax);
 }
 
-void DisplayFile::Transladar(int index, double dx, double dy) {
-	Poligonos[index].Transladar(dx, dy);
+void DisplayFile::Transladar(int index, double dx, double dy, double dz) {
+	Poligonos[index].Transladar(dx, dy, dz);
 }
 
 void DisplayFile::Escalonar(int index, double fx, double fy, bool homogenea) {
@@ -137,6 +139,16 @@ void DisplayFile::AplicarBSpline(int index, double intervalo) {
 void DisplayFile::AplicarBSplineFwDif(int index, double intervalo) {
 	vector<Ponto2d> pontos = Poligonos[index].AplicarBSplineFwDif(intervalo);
 	_registrarCurva(&pontos, "BSplineFwDif ");
+}
+
+// 3D
+void DisplayFile::CriarPoliedro(vector<vector<double>> linhas) {
+	int id = GerarNovoId();
+	Poligono poligono = Poliedro(id, "Poliedro");
+	for (int i = 0; i < linhas.size(); i++) {
+		poligono.Pontos.push_back(Ponto3d(linhas[i][0], linhas[i][1], linhas[i][2]));
+	}
+	AdicionarPoligono(poligono);
 }
 
 

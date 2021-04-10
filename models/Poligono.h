@@ -3,6 +3,7 @@
 #define PoligonoH
 
 #include "Ponto2d.h"
+#include "Ponto3d.h"
 #include "Janela.h"
 #include "Dda.h"
 #include "Bresenham.h"
@@ -12,14 +13,13 @@
 #include "Hermite.h"
 #include "Bezier.h"
 #include "BSpline.h"
-#include <vector>
 #include <Vcl.ExtCtrls.hpp>
 #include<Vcl.StdCtrls.hpp>
 #include <cmath>
-
+#include <vector>
 using std::vector;
-using std::string;
 //---------------------------------------------------------------------------
+
 class Poligono
 {
 	public:
@@ -39,7 +39,7 @@ class Poligono
 		void MostrarPontos(TListBox *);
 		void AtualizarEixoX(double, double);
 		void AtualizarEixoY(double, double);
-		void Transladar(double, double);
+		void Transladar(double, double, double);
 		void Escalonar(double, double, bool);
 		void EscalonamentoHomogeneo(double, double);
 		vector<vector<double>> MultiplicarMatrizes(vector<vector<double>>, vector<vector<double>>);

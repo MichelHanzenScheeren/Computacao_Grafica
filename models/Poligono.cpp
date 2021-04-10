@@ -66,8 +66,18 @@ UnicodeString Poligono::ToString() {
 
 void Poligono::MostrarPontos(TListBox *listbox) {
 	listbox->Clear();
-	for (int i = 0; i < Pontos.size(); i++)
-	   listbox->Items->Add(Pontos[i].ToString());
+	for (int i = 0; i < Pontos.size(); i++) {
+		Ponto2d *ponto = &Pontos[i];
+		if(ponto->Is<Ponto3d>()) {
+//			Ponto3d *ponto3d = (Ponto3d*)&Pontos[i];
+//			listbox->Items->Add(ponto3d->ToString());
+			listbox->Items->Add("Teste 1");
+
+		} else {
+//			listbox->Items->Add(Pontos[i].ToString());
+			listbox->Items->Add("Teste 2");
+		}
+	}
 }
 
 void Poligono::AtualizarEixoX(double min, double max) {
@@ -80,11 +90,18 @@ void Poligono::AtualizarEixoY(double min, double max) {
 	Pontos[1].Y = max;
 }
 
-void Poligono::Transladar(double dx, double dy) {
-	for(int i = 0; i < Pontos.size(); i++)
-        Pontos[i].Transladar(dx, dy);
-}
-
+void Poligono::Transladar(double dx, double dy, double dz) {
+//	for(int i = 0; i < Pontos.size(); i++) {
+//		if (Pontos[i].type() == TypePonto::Ponto2d) {
+//			Pontos[i].Transladar(dx, dy);
+//        } else  {
+//			Ponto3d *ponto3d = (Ponto3d*)&Pontos[i];
+//			ponto3d->Transladar(dx, dy, dz);
+//		}
+//
+//    }
+//
+}
 void Poligono::Escalonar(double fx, double fy, bool homogenea) {
 	if(homogenea) {
 		EscalonamentoHomogeneo(fx, fy);

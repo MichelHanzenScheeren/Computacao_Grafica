@@ -67,7 +67,7 @@ void Auxiliar::SalvarNovoPontoDoPoligono(int x, int y) {
 	if(_primeiroPontoPoligono) {
 		_primeiroPontoPoligono = false;
 		int id = _display.GerarNovoId();
-		Poligono poligono(id, "Poligono " + IntToStr(id - 3));
+		Poligono poligono(id, "Poligono");
 		poligono.AdicionarPonto(ponto);
 		_display.AdicionarPoligono(poligono);
 	} else {
@@ -96,7 +96,7 @@ void Auxiliar::SalvarNovoPontoDoCirculo(int x, int y) {
 	if(_primeiroPontoCirculo) {
 		_primeiroPontoCirculo = false;
 		int id = _display.GerarNovoId();
-		Poligono poligono(id, "Círculo " + IntToStr(id - 3));
+		Poligono poligono(id, "Círculo");
 		poligono.AdicionarPonto(ponto);
 		_display.AdicionarPoligono(poligono);
 	} else {
@@ -146,8 +146,8 @@ void Auxiliar::Move(UnicodeString type, double incremento) {
 		_mundo.IncrementarX(incremento * -1, incremento * -1);
 }
 
-void Auxiliar::Transladar(int index, double dx, double dy) {
-	_display.Transladar(index, dx, dy);
+void Auxiliar::Transladar(int index, double dx, double dy, double dz) {
+	_display.Transladar(index, dx, dy, dz);
 }
 
 void Auxiliar::Escalonar(int index, double fx, double fy, bool homogeneo) {
@@ -197,4 +197,12 @@ void Auxiliar::AplicarBSpline(int index, double intervalo) {
 
 void Auxiliar::AplicarBSplineFwDif(int index, double intervalo) {
 	_display.AplicarBSplineFwDif(index, intervalo);
+}
+
+void Auxiliar::LerArquivo(char *caminhoArquivo) {
+	Arquivo arquivo = Arquivo();
+	vector<vector<double>> resultado = arquivo.Ler(caminhoArquivo);
+	if(resultado.size() != 0) {
+		_display.CriarPoliedro(resultado);
+	}
 }

@@ -224,7 +224,7 @@ object MyForm: TMyForm
     end
     object lbPontos: TListBox
       Left = 10
-      Top = 145
+      Top = 149
       Width = 190
       Height = 85
       ItemHeight = 13
@@ -468,32 +468,40 @@ object MyForm: TMyForm
     object Label16: TLabel
       Left = 10
       Top = 53
-      Width = 76
+      Width = 33
       Height = 13
       Alignment = taCenter
-      Caption = 'Deslocamento X'
+      Caption = 'Desl. X'
     end
     object Label17: TLabel
-      Left = 120
+      Left = 78
       Top = 53
-      Width = 76
+      Width = 33
       Height = 13
       Alignment = taCenter
-      Caption = 'Deslocamento Y'
+      Caption = 'Desl. Y'
+    end
+    object Label39: TLabel
+      Left = 145
+      Top = 53
+      Width = 33
+      Height = 13
+      Alignment = taCenter
+      Caption = 'Desl. Z'
     end
     object edDeslocamentoX: TEdit
       Left = 10
       Top = 69
-      Width = 80
+      Width = 55
       Height = 19
       Alignment = taCenter
       TabOrder = 0
       Text = '25'
     end
     object edDeslocamentoY: TEdit
-      Left = 120
+      Left = 78
       Top = 69
-      Width = 80
+      Width = 55
       Height = 19
       Alignment = taCenter
       TabOrder = 1
@@ -507,6 +515,15 @@ object MyForm: TMyForm
       Caption = 'TRANSLADAR'
       TabOrder = 2
       OnClick = btTransladarClick
+    end
+    object edDeslocamentoZ: TEdit
+      Left = 145
+      Top = 69
+      Width = 55
+      Height = 19
+      Alignment = taCenter
+      TabOrder = 3
+      Text = '25'
     end
   end
   object Panel7: TPanel
@@ -544,26 +561,34 @@ object MyForm: TMyForm
       Caption = 'Fator X'
     end
     object Label20: TLabel
-      Left = 120
+      Left = 78
       Top = 36
       Width = 35
       Height = 13
       Alignment = taCenter
       Caption = 'Fator Y'
     end
+    object Label40: TLabel
+      Left = 145
+      Top = 36
+      Width = 35
+      Height = 13
+      Alignment = taCenter
+      Caption = 'Fator Z'
+    end
     object edFatorX: TEdit
       Left = 10
       Top = 52
-      Width = 80
+      Width = 50
       Height = 19
       Alignment = taCenter
       TabOrder = 0
       Text = '2'
     end
     object edFatorY: TEdit
-      Left = 120
+      Left = 78
       Top = 52
-      Width = 80
+      Width = 50
       Height = 19
       Alignment = taCenter
       TabOrder = 1
@@ -585,6 +610,15 @@ object MyForm: TMyForm
       Height = 17
       Caption = 'Usar transformada homog'#234'nea'
       TabOrder = 3
+    end
+    object edFatorZ: TEdit
+      Left = 145
+      Top = 52
+      Width = 50
+      Height = 19
+      Alignment = taCenter
+      TabOrder = 4
+      Text = '2'
     end
   end
   object Panel8: TPanel
@@ -1101,6 +1135,58 @@ object MyForm: TMyForm
       Caption = 'CRIAR CURVA'
       TabOrder = 1
       OnClick = btBezierClick
+    end
+  end
+  object Panel18: TPanel
+    Left = 1170
+    Top = 560
+    Width = 272
+    Height = 120
+    BevelOuter = bvNone
+    BorderStyle = bsSingle
+    Caption = 'Panel1'
+    Ctl3D = False
+    ParentCtl3D = False
+    ShowCaption = False
+    TabOrder = 19
+    DesignSize = (
+      270
+      118)
+    object Label41: TLabel
+      Left = 10
+      Top = 10
+      Width = 250
+      Height = 13
+      Alignment = taCenter
+      Anchors = [akLeft, akTop, akRight]
+      AutoSize = False
+      Caption = 'LEITURA DE FIGURAS 3D'
+      ExplicitWidth = 188
+    end
+    object rg3d: TRadioGroup
+      Left = 10
+      Top = 26
+      Width = 252
+      Height = 45
+      Margins.Top = 0
+      Margins.Bottom = 0
+      Columns = 2
+      ItemIndex = 0
+      Items.Strings = (
+        'piramide.txt'
+        'cubo.txt')
+      ParentShowHint = False
+      ShowHint = False
+      TabOrder = 0
+    end
+    object btLerArquivo: TButton
+      Left = 10
+      Top = 85
+      Width = 252
+      Height = 25
+      Caption = 'LER ARQUIVO'
+      TabOrder = 1
+      OnClick = btLerArquivoClick
     end
   end
 end

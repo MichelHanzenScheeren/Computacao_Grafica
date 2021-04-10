@@ -6,6 +6,7 @@
 #include "Ponto2d.h"
 #include "Poligono.h"
 #include "DisplayFile.h"
+#include "models/Arquivo.h"
 #include <Vcl.ExtCtrls.hpp>
 #include <Vcl.StdCtrls.hpp>
 //---------------------------------------------------------------------------
@@ -41,7 +42,8 @@ class Auxiliar
 		void AtualizarEixos();
 		void Zoom(UnicodeString, double);
 		void Move(UnicodeString, double);
-		void Transladar(int, double, double);
+        // TRANSFORMAÇÕES
+		void Transladar(int, double, double, double);
 		void Escalonar(int, double, double, bool);
 		void Rotacionar(int, double, bool);
 		void Refletir(int, int, int);
@@ -55,5 +57,7 @@ class Auxiliar
         void AplicarBezier(int, double);
 		void AplicarBSpline(int, double);
 		void AplicarBSplineFwDif(int, double);
+		// 3D
+        void LerArquivo(char *);
 };
 #endif
