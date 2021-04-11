@@ -18,25 +18,29 @@ class DisplayFile
 	private:
         int _id = 0;
 	public:
-		vector<Poligono> Poligonos;
+		vector<Poligono*> Poligonos;
+
         int GerarNovoId();
-		void AdicionarPoligono(Poligono);
-		void AdicionarPontoAoUltimoPoligono(Ponto2d);
+		void AdicionarPoligono(Poligono*);
+		void AdicionarPontoAoUltimoPoligono(Ponto2d*);
 		void Desenhar(TCanvas *, int, Janela, Janela);
 		void MostrarPoligonosDesenhados(TListBox *);
-		void GerarPontosDoCirculo(Ponto2d);
+		void GerarPontosDoCirculo(Ponto2d*);
 		void MostrarPontosDeUmPoligono(int, TListBox *);
-        void AtualizarEixos(Janela mundo);
+		void AtualizarEixos(Janela mundo);
+		// TRANSFORMAÇÕES
 		void Transladar(int, double, double, double);
-		void Escalonar(int, double, double, bool);
-		void Rotacionar(int, double, bool);
+		void Escalonar(int, double, double, double, bool);
+        bool ApenasPoligono(int index);
+		void Rotacionar(int, double, bool, int);
 		void Refletir(int, int, int);
-		Ponto2d PontoCentral(int);
-        void PintarPontoCentral(Ponto2d, TCanvas *, Janela, Janela);
+		Ponto2d* PontoCentral(int);
+		void PintarPontoCentral(Ponto2d*, TCanvas *, Janela, Janela);
+		// CLIPPING
 		void AplicarClipping(Janela);
 		void ApagarPoligono(int);
 		// CURVAS
-        void _registrarCurva(vector<Ponto2d> *, UnicodeString);
+        void _registrarCurva(vector<Ponto2d*> *, UnicodeString);
 		void AplicarCasteljau(int, double);
 		void AplicarHermite(int, double);
         void AplicarBezier(int, double);

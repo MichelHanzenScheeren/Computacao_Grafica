@@ -11,11 +11,11 @@ using std::vector;
 //---------------------------------------------------------------------------
 class Hermite {
 	private:
-		vector<Ponto2d> _pontos;
-		vector<Ponto2d> _curva;
+		vector<Ponto2d*> _pontos;
+		vector<Ponto2d*> _curva;
 
 	public:
-		Hermite(vector<Ponto2d>);
-		vector<Ponto2d> CriarCurva(double);
+		Hermite(vector<Ponto2d*>);
+		vector<Ponto2d*> CriarCurva(double);
 };
 #endif

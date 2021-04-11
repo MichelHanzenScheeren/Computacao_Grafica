@@ -4,11 +4,11 @@
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 
-BSpline::BSpline(vector<Ponto2d> pontos) {
+BSpline::BSpline(vector<Ponto2d*> pontos) {
 	_pontos = pontos;
 }
 
-vector<Ponto2d> BSpline::CriarCurva(double intervalo) {
+vector<Ponto2d*> BSpline::CriarCurva(double intervalo) {
 	if (_pontos.size() < 4 || intervalo <= 0)
 		return _curva;
 	vector<vector<double>> Mbs = {
@@ -23,13 +23,13 @@ vector<Ponto2d> BSpline::CriarCurva(double intervalo) {
 		}
 	}
 	for (int i = 3; i < _pontos.size(); i++) {
-		Ponto2d p1 = _pontos[i - 3];
-		Ponto2d p2 = _pontos[i - 2];
-		Ponto2d p3 = _pontos[i - 1];
-		Ponto2d p4 = _pontos[i];
+		Ponto2d *p1 = _pontos[i - 3];
+		Ponto2d *p2 = _pontos[i - 2];
+		Ponto2d *p3 = _pontos[i - 1];
+		Ponto2d *p4 = _pontos[i];
 
-		vector<vector<double>> Gbsx = {{p1.X}, {p2.X}, {p3.X}, {p4.X}};
-		vector<vector<double>> Gbsy = {{p1.Y}, {p2.Y}, {p3.Y}, {p4.Y}};
+		vector<vector<double>> Gbsx = {{p1->X}, {p2->X}, {p3->X}, {p4->X}};
+		vector<vector<double>> Gbsy = {{p1->Y}, {p2->Y}, {p3->Y}, {p4->Y}};
 		vector<vector<double>> MGbsx = Matriz::Multiplicar(Mbs, Gbsx);
 		vector<vector<double>> MGbsy = Matriz::Multiplicar(Mbs, Gbsy);
 
@@ -38,14 +38,14 @@ vector<Ponto2d> BSpline::CriarCurva(double intervalo) {
 			vector<vector<double>> T = {{pow(t, 3), pow(t, 2), t, 1}};
 			vector matrizX = Matriz::Multiplicar(T, MGbsx);
 			vector matrizY = Matriz::Multiplicar(T, MGbsy);
-			_curva.push_back(Ponto2d(matrizX[0][0], matrizY[0][0]));
+			_curva.push_back(new Ponto2d(matrizX[0][0], matrizY[0][0]));
 			t += intervalo;
 		}
 	}
 	return _curva;
 }
 
-vector<Ponto2d> BSpline::CriarCurvaForwardDifference(double intervalo) {
+vector<Ponto2d*> BSpline::CriarCurvaForwardDifference(double intervalo) {
 	if (_pontos.size() < 4 || intervalo <= 0)
 		return _curva;
 	vector<vector<double>> Mbs = {
@@ -60,13 +60,13 @@ vector<Ponto2d> BSpline::CriarCurvaForwardDifference(double intervalo) {
 		}
 	}
 	for (int i = 3; i < _pontos.size(); i++) {
-		Ponto2d p1 = _pontos[i - 3];
-		Ponto2d p2 = _pontos[i - 2];
-		Ponto2d p3 = _pontos[i - 1];
-		Ponto2d p4 = _pontos[i];
+		Ponto2d *p1 = _pontos[i - 3];
+		Ponto2d *p2 = _pontos[i - 2];
+		Ponto2d *p3 = _pontos[i - 1];
+		Ponto2d *p4 = _pontos[i];
 
-		vector<vector<double>> Gbsx = {{p1.X}, {p2.X}, {p3.X}, {p4.X}};
-		vector<vector<double>> Gbsy = {{p1.Y}, {p2.Y}, {p3.Y}, {p4.Y}};
+		vector<vector<double>> Gbsx = {{p1->X}, {p2->X}, {p3->X}, {p4->X}};
+		vector<vector<double>> Gbsy = {{p1->Y}, {p2->Y}, {p3->Y}, {p4->Y}};
 		vector<vector<double>> MGbsx = Matriz::Multiplicar(Mbs, Gbsx);
 		vector<vector<double>> MGbsy = Matriz::Multiplicar(Mbs, Gbsy);
 
@@ -86,7 +86,7 @@ vector<Ponto2d> BSpline::CriarCurvaForwardDifference(double intervalo) {
 
 		double j = 0.0;
 		while (j <= 1.0) {
-			_curva.push_back(Ponto2d(x, y));
+			_curva.push_back(new Ponto2d(x, y));
 			j += intervalo;
 			x += dx;
 			dx += d2x;

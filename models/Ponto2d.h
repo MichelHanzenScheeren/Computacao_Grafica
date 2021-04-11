@@ -4,7 +4,7 @@
 #include "Janela.h"
 #include "Matriz.h"
 #include<Vcl.StdCtrls.hpp>
-#include <stdio.h>
+#include <cmath>
 #include <vector>
 using std::vector;
 //---------------------------------------------------------------------------

@@ -127,6 +127,7 @@ __published:	// IDE-managed Components
 	TLabel *Label41;
 	TRadioGroup *rg3d;
 	TButton *btLerArquivo;
+	TComboBox *cboxRotacao;
 	void __fastcall imgMouseMove(TObject *Sender, TShiftState Shift, int X, int Y);
 	void __fastcall lbPoligonosClick(TObject *Sender);
 	void __fastcall btDesenharPoligonoClick(TObject *Sender);

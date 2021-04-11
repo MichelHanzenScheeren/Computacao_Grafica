@@ -182,7 +182,8 @@ void __fastcall TMyForm::btEscalonarClick(TObject *Sender) {
 	if (_poligonoValidoSelecionado(index, "escalonar")) {
 		double fx = StrToFloat(edFatorX->Text);
 		double fy = StrToFloat(edFatorY->Text);
-		auxiliar.Escalonar(index, fx, fy, cbEscalonamento->Checked);
+		double fz = StrToFloat(edFatorZ->Text);
+		auxiliar.Escalonar(index, fx, fy, fx, cbEscalonamento->Checked);
 		_redesenharEAtualizarPontosDoPoligono(index);
 	}
 }
@@ -190,10 +191,18 @@ void __fastcall TMyForm::btEscalonarClick(TObject *Sender) {
 
 void __fastcall TMyForm::btRotacionarClick(TObject *Sender) {
 	int index = lbPoligonos->ItemIndex;
-	if(_poligonoValidoSelecionado(index, "rotacionar")) {
-		double angulo = StrToFloat(edAngulo->Text);
-		auxiliar.Rotacionar(index, angulo, cbRotacao->Checked);
-		_redesenharEAtualizarPontosDoPoligono(index);
+	int eixo = cboxRotacao->ItemIndex;
+	if(_poligonoValidoSelecionado(index, "rotacionar") && eixo != -1) {
+		if(eixo != 2 && auxiliar.ApenasPoligono(index)) {
+			UnicodeString auxEixo = eixo == 0 ? "X" : "Y";
+			ShowMessage("Não é possível rotacionar um Poligono pelo eixo " + auxEixo);
+		} else {
+			double angulo = StrToFloat(edAngulo->Text);
+			bool homogenea = cbRotacao->Checked;
+			auxiliar.Rotacionar(index, angulo, homogenea, eixo);
+			_redesenharEAtualizarPontosDoPoligono(index);
+        }
+
 	}
 }
 //---------------------------------------------------------------------------
@@ -216,9 +225,9 @@ void __fastcall TMyForm::btRefletirClick(TObject *Sender) {
 void __fastcall TMyForm::btPontoCentralClick(TObject *Sender) {
 	int index = lbPoligonos->ItemIndex;
 	if(_poligonoValidoSelecionado(index, "exibir ponto central")) {
-		Ponto2d ponto = auxiliar.PontoCentral(index);
-		edXc->Text = FloatToStr(ponto.X);
-		edYc->Text = FloatToStr(ponto.Y);
+		Ponto2d *ponto = auxiliar.PontoCentral(index);
+		edXc->Text = FloatToStr(ponto->X);
+		edYc->Text = FloatToStr(ponto->Y);
 		auxiliar.PintarPontoCentral(img->Canvas, ponto);
 	}
 }

@@ -6,7 +6,7 @@
 
 #define SIGN(x) ((x) < 0 ? (-1): (1))
 
-Dda::Dda(TCanvas *canvas, vector<Ponto2d> pontos) {
+Dda::Dda(TCanvas *canvas, vector<Ponto2d*> pontos) {
 	_pontos = pontos;
 	_canvas = canvas;
 }
@@ -16,10 +16,10 @@ void Dda::Desenhar(Janela mundo, Janela viewport) {
 	double deltax, deltay, x, y;
 
 	for(int i = 0; i < _pontos.size() - 1; i++) {
-		xvp1 = _pontos[i].XMundoParaViewport(mundo, viewport);
-		yvp1 = _pontos[i].YMundoParaViewport(mundo, viewport);
-		xvp2 = _pontos[i + 1].XMundoParaViewport(mundo, viewport);
-		yvp2 = _pontos[i + 1].YMundoParaViewport(mundo, viewport);
+		xvp1 = _pontos[i]->XMundoParaViewport(mundo, viewport);
+		yvp1 = _pontos[i]->YMundoParaViewport(mundo, viewport);
+		xvp2 = _pontos[i + 1]->XMundoParaViewport(mundo, viewport);
+		yvp2 = _pontos[i + 1]->YMundoParaViewport(mundo, viewport);
 
 		if(abs(xvp2 - xvp1) >= abs(yvp2 - yvp1)) {
 			length = abs(xvp2 - xvp1);
@@ -39,8 +39,8 @@ void Dda::Desenhar(Janela mundo, Janela viewport) {
 		}
 	}
 	if(_pontos.size() == 1) {
-		xvp1 = _pontos[0].XMundoParaViewport(mundo, viewport);
-		yvp1 = _pontos[0].YMundoParaViewport(mundo, viewport);
+		xvp1 = _pontos[0]->XMundoParaViewport(mundo, viewport);
+		yvp1 = _pontos[0]->YMundoParaViewport(mundo, viewport);
 		_canvas->Pixels[xvp1][yvp1] = clBlack;
 	}
 }

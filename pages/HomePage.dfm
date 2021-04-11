@@ -513,7 +513,7 @@ object MyForm: TMyForm
       Width = 190
       Height = 25
       Caption = 'TRANSLADAR'
-      TabOrder = 2
+      TabOrder = 3
       OnClick = btTransladarClick
     end
     object edDeslocamentoZ: TEdit
@@ -522,7 +522,7 @@ object MyForm: TMyForm
       Width = 55
       Height = 19
       Alignment = taCenter
-      TabOrder = 3
+      TabOrder = 2
       Text = '25'
     end
   end
@@ -600,7 +600,7 @@ object MyForm: TMyForm
       Width = 190
       Height = 25
       Caption = 'ESCALONAR'
-      TabOrder = 2
+      TabOrder = 4
       OnClick = btEscalonarClick
     end
     object cbEscalonamento: TCheckBox
@@ -617,7 +617,7 @@ object MyForm: TMyForm
       Width = 50
       Height = 19
       Alignment = taCenter
-      TabOrder = 4
+      TabOrder = 2
       Text = '2'
     end
   end
@@ -650,17 +650,18 @@ object MyForm: TMyForm
     object Label22: TLabel
       Left = 10
       Top = 36
-      Width = 88
+      Width = 33
       Height = 13
       Alignment = taCenter
-      Caption = #194'ngulo de rota'#231#227'o'
+      Caption = #194'ngulo'
     end
     object edAngulo: TEdit
       Left = 10
       Top = 52
-      Width = 190
+      Width = 80
       Height = 19
       Alignment = taCenter
+      BevelWidth = 50
       TabOrder = 0
       Text = '90'
     end
@@ -674,12 +675,27 @@ object MyForm: TMyForm
       OnClick = btRotacionarClick
     end
     object cbRotacao: TCheckBox
-      Left = 10
-      Top = 86
-      Width = 190
+      Left = 117
+      Top = 52
+      Width = 83
       Height = 17
-      Caption = 'Usar transformada homog'#234'nea'
+      Caption = 'HOMOG'#202'NEA'
       TabOrder = 2
+    end
+    object cboxRotacao: TComboBox
+      Left = 8
+      Top = 85
+      Width = 190
+      Height = 21
+      Style = csDropDownList
+      DropDownCount = 3
+      ItemIndex = 2
+      TabOrder = 3
+      Text = 'Eixo Z'
+      Items.Strings = (
+        'Eixo X'
+        'Eixo Y'
+        'Eixo Z')
     end
   end
   object Panel9: TPanel

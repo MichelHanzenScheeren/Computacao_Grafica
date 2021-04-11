@@ -11,11 +11,11 @@ Poligono::Poligono(int id, UnicodeString tipo) {
 	Tipo = tipo;
 }
 
-void Poligono::AdicionarPonto(Ponto2d ponto) {
+void Poligono::AdicionarPonto(Ponto2d *ponto) {
 	Pontos.push_back(ponto);
 }
 
-void Poligono::AdicionarPontos(vector<Ponto2d> pontos) {
+void Poligono::AdicionarPontos(vector<Ponto2d*> pontos) {
 	for (int i = 0; i < pontos.size(); i++) {
 	  AdicionarPonto(pontos[i]);  
 	}
@@ -40,8 +40,8 @@ void Poligono::Desenhar(
 void Poligono::DesenharCirculo(TCanvas *canvas, Janela mundo, Janela viewport) {
 	int xvp, yvp;
 	for(int i = 0; i < Pontos.size(); i++) {
-		xvp = Pontos[i].XMundoParaViewport(mundo, viewport);
-		yvp = Pontos[i].YMundoParaViewport(mundo, viewport);
+		xvp = Pontos[i]->XMundoParaViewport(mundo, viewport);
+		yvp = Pontos[i]->YMundoParaViewport(mundo, viewport);
 		canvas->Pixels[xvp][yvp] = clBlack;
 	}
 }
@@ -49,8 +49,8 @@ void Poligono::DesenharCirculo(TCanvas *canvas, Janela mundo, Janela viewport) {
 void Poligono::LineTo(TCanvas *canvas, Janela mundo, Janela viewport) {
 	int xvp, yvp;
 	for(int i = 0; i < Pontos.size(); i++) {
-		xvp = Pontos[i].XMundoParaViewport(mundo, viewport);
-		yvp = Pontos[i].YMundoParaViewport(mundo, viewport);
+		xvp = Pontos[i]->XMundoParaViewport(mundo, viewport);
+		yvp = Pontos[i]->YMundoParaViewport(mundo, viewport);
 		if(i == 0) {
             canvas->Pixels[xvp][yvp] = clBlack;
 			canvas->MoveTo(xvp, yvp);
@@ -66,55 +66,37 @@ UnicodeString Poligono::ToString() {
 
 void Poligono::MostrarPontos(TListBox *listbox) {
 	listbox->Clear();
-	for (int i = 0; i < Pontos.size(); i++) {
-		Ponto2d *ponto = &Pontos[i];
-		if(ponto->Is<Ponto3d>()) {
-//			Ponto3d *ponto3d = (Ponto3d*)&Pontos[i];
-//			listbox->Items->Add(ponto3d->ToString());
-			listbox->Items->Add("Teste 1");
-
-		} else {
-//			listbox->Items->Add(Pontos[i].ToString());
-			listbox->Items->Add("Teste 2");
-		}
-	}
+	for (int i = 0; i < Pontos.size(); i++)
+		listbox->Items->Add(Pontos[i]->ToString());
 }
 
 void Poligono::AtualizarEixoX(double min, double max) {
-	Pontos[0].X = min;
-	Pontos[1].X = max;
+	Pontos[0]->X = min;
+	Pontos[1]->X = max;
 }
 
 void Poligono::AtualizarEixoY(double min, double max) {
-	Pontos[0].Y = min;
-	Pontos[1].Y = max;
+	Pontos[0]->Y = min;
+	Pontos[1]->Y = max;
 }
 
-void Poligono::Transladar(double dx, double dy, double dz) {
-//	for(int i = 0; i < Pontos.size(); i++) {
-//		if (Pontos[i].type() == TypePonto::Ponto2d) {
-//			Pontos[i].Transladar(dx, dy);
-//        } else  {
-//			Ponto3d *ponto3d = (Ponto3d*)&Pontos[i];
-//			ponto3d->Transladar(dx, dy, dz);
-//		}
-//
-//    }
-//
+void Poligono::Transladar(double dx, double dy) {
+	for(int i = 0; i < Pontos.size(); i++)
+		Pontos[i]->Transladar(dx, dy);
 }
 void Poligono::Escalonar(double fx, double fy, bool homogenea) {
 	if(homogenea) {
 		EscalonamentoHomogeneo(fx, fy);
     } else {
 		for(int i = 0; i < Pontos.size(); i++)
-			Pontos[i].Escalonar(fx, fy);
+			Pontos[i]->Escalonar(fx, fy);
 	}
 }
 
 void Poligono::EscalonamentoHomogeneo(double fx, double fy) {
 	// o deslocamento usado será o ponto inicial * (-1)
-	double dx = Pontos[0].X * (-1);
-	double dy = Pontos[0].Y * (-1);
+	double dx = Pontos[0]->X * (-1);
+	double dy = Pontos[0]->Y * (-1);
 	// Transladar polígono para a origem
 	vector<vector<double>> mat1 = {{1, 0, 0}, {0, 1, 0}, {dx, dy, 1}};
 	// Efetivamente escalonar o poligono
@@ -128,7 +110,7 @@ void Poligono::EscalonamentoHomogeneo(double fx, double fy) {
 
 	// Aplicação do escalonamento em cada ponto
 	for(int i = 0; i < Pontos.size(); i++)
-		Pontos[i].EscalonamentoHomogeneo(homogenea);
+		Pontos[i]->EscalonamentoHomogeneo(homogenea);
 }
 
 void Poligono::Rotacionar(double angulo, bool homogeneo) {
@@ -136,16 +118,16 @@ void Poligono::Rotacionar(double angulo, bool homogeneo) {
 		RotacaoHomogenea(angulo);
 	} else {
 		for(int i = 0; i < Pontos.size(); i++) {
-			Pontos[i].Rotacionar(angulo);
+			Pontos[i]->Rotacionar(angulo);
 		}
 	}
 }
 
 void Poligono::RotacaoHomogenea(double angulo) {
 	 // O deslocamento usado será o ponto central * (-1)
-	Ponto2d ponto = PontoCentral();
-	double dx = ponto.X * (-1);
-	double dy = ponto.Y * (-1);
+	Ponto2d *ponto = PontoCentral();
+	double dx = ponto->X * (-1);
+	double dy = ponto->Y * (-1);
 	// Transladar polígono para que o ponto central seja na origem
 	vector<vector<double>> mat1 = {{1, 0, 0}, {0, 1, 0}, {dx, dy, 1}};
 	// Efetivamente rotacionar o poligono
@@ -162,42 +144,42 @@ void Poligono::RotacaoHomogenea(double angulo) {
 
 	// Aplicação da rotação em cada ponto
 	for(int i = 0; i < Pontos.size(); i++)
-		Pontos[i].RotacaoHomogenea(homogenea);
+		Pontos[i]->RotacaoHomogenea(homogenea);
 }
 
 void Poligono::Refletir(int eixoX, int eixoY) {
 	for(int i = 0; i < Pontos.size(); i++)
-		Pontos[i].Refletir(eixoX, eixoY);
+		Pontos[i]->Refletir(eixoX, eixoY);
 }
 
-Ponto2d Poligono::PontoCentral() {
+Ponto2d* Poligono::PontoCentral() {
 	double somatorioX = 0;
 	double somatorioY = 0;
 	for (int i = 0; i < Pontos.size(); i++) {
-		somatorioX += Pontos[i].X;
-		somatorioY += Pontos[i].Y;
+		somatorioX += Pontos[i]->X;
+		somatorioY += Pontos[i]->Y;
 	}
-	return Ponto2d(somatorioX / Pontos.size(), somatorioY / Pontos.size());
+	return new Ponto2d(somatorioX / Pontos.size(), somatorioY / Pontos.size());
 }
 
 void Poligono::AdicionarPontosAoCirculo(int xc, int yc, int x, int y) {
-	AdicionarPonto(Ponto2d(xc + x, yc + y)); // x, y
-	AdicionarPonto(Ponto2d(xc - x, yc + y)); // -x, y
-	AdicionarPonto(Ponto2d(xc + x, yc - y)); // x, -y
-	AdicionarPonto(Ponto2d(xc - x, yc - y)); // -x, -y
-	AdicionarPonto(Ponto2d(xc + y, yc + x)); // y, x
-	AdicionarPonto(Ponto2d(xc - y, yc + x)); // -y, x
-	AdicionarPonto(Ponto2d(xc + y, yc - x)); // y, -x
-	AdicionarPonto(Ponto2d(xc - y, yc - x)); // -y, -x
+	AdicionarPonto(new Ponto2d(xc + x, yc + y)); // x, y
+	AdicionarPonto(new Ponto2d(xc - x, yc + y)); // -x, y
+	AdicionarPonto(new Ponto2d(xc + x, yc - y)); // x, -y
+	AdicionarPonto(new Ponto2d(xc - x, yc - y)); // -x, -y
+	AdicionarPonto(new Ponto2d(xc + y, yc + x)); // y, x
+	AdicionarPonto(new Ponto2d(xc - y, yc + x)); // -y, x
+	AdicionarPonto(new Ponto2d(xc + y, yc - x)); // y, -x
+	AdicionarPonto(new Ponto2d(xc - y, yc - x)); // -y, -x
 }
 
-void Poligono::GerarPontosDoCirculo(Ponto2d c) {
+void Poligono::GerarPontosDoCirculo(Ponto2d *c) {
 	if(Pontos.size() == 0) return;
-	double raio = sqrt(pow(c.X - Pontos[0].X, 2) + pow(c.Y - Pontos[0].Y, 2));
+	double raio = sqrt(pow(c->X - Pontos[0]->X, 2) + pow(c->Y - Pontos[0]->Y, 2));
 	double x = 0;
 	double y = raio;
 	double p = 1 - raio;
-	AdicionarPontosAoCirculo(Pontos[0].X, Pontos[0].Y, x, y);
+	AdicionarPontosAoCirculo(Pontos[0]->X, Pontos[0]->Y, x, y);
 	while(y > x) {
 		x += 1;
 		if(p < 0) {
@@ -206,11 +188,11 @@ void Poligono::GerarPontosDoCirculo(Ponto2d c) {
             y -= 1;
 			p += 2.0 * (x - y) + 1.0;
 		}
-		AdicionarPontosAoCirculo(Pontos[0].X, Pontos[0].Y, x, y);
+		AdicionarPontosAoCirculo(Pontos[0]->X, Pontos[0]->Y, x, y);
 	}
 }
 
-vector<Ponto2d> Poligono::FiltrarPontosDoClipping(Janela clipping) {
+vector<Ponto2d*> Poligono::FiltrarPontosDoClipping(Janela clipping) {
 	Clipping *clip = new Clipping(clipping);
 	if (Pontos.size() == 1) {
 		 clip->PontoUnico(Pontos[0]);
@@ -226,27 +208,27 @@ vector<Ponto2d> Poligono::FiltrarPontosDoClipping(Janela clipping) {
 }
 
 // CURVAS
-vector<Ponto2d> Poligono::AplicarCasteljau(double precisao) {
+vector<Ponto2d*> Poligono::AplicarCasteljau(double precisao) {
 	Casteljau casteljau(Pontos);
 	return casteljau.CriarCurva(precisao);
 }
 
-vector<Ponto2d> Poligono::AplicarHermite(double intervalo) {
+vector<Ponto2d*> Poligono::AplicarHermite(double intervalo) {
 	Hermite hermite(Pontos);
 	return hermite.CriarCurva(intervalo);
 }
 
-vector<Ponto2d> Poligono::AplicarBezier(double intervalo) {
+vector<Ponto2d*> Poligono::AplicarBezier(double intervalo) {
 	Bezier bezier(Pontos);
 	return bezier.CriarCurva(intervalo);
 }
 
-vector<Ponto2d> Poligono::AplicarBSpline(double intervalo) {
+vector<Ponto2d*> Poligono::AplicarBSpline(double intervalo) {
 	BSpline bSpline(Pontos);
 	return bSpline.CriarCurva(intervalo);
 }
 
-vector<Ponto2d> Poligono::AplicarBSplineFwDif(double intervalo) {
+vector<Ponto2d*> Poligono::AplicarBSplineFwDif(double intervalo) {
 	BSpline bSpline(Pontos);
 	return bSpline.CriarCurvaForwardDifference(intervalo);
 }

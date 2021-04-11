@@ -44,11 +44,12 @@ class Auxiliar
 		void Move(UnicodeString, double);
         // TRANSFORMAÇÕES
 		void Transladar(int, double, double, double);
-		void Escalonar(int, double, double, bool);
-		void Rotacionar(int, double, bool);
+		void Escalonar(int, double, double, double, bool);
+        bool ApenasPoligono(int);
+		void Rotacionar(int, double, bool, int);
 		void Refletir(int, int, int);
-		Ponto2d PontoCentral(int);
-		void PintarPontoCentral(TCanvas *, Ponto2d);
+		Ponto2d* PontoCentral(int);
+		void PintarPontoCentral(TCanvas *, Ponto2d*);
 		void AplicarClipping();
 		void ApagarPoligono(int);
 		// CURVAS

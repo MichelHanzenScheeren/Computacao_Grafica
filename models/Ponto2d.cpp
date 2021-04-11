@@ -1,7 +1,6 @@
 //---------------------------------------------------------------------------
 #pragma hdrstop
 #include "Ponto2d.h"
-#include <cmath>
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 
@@ -26,7 +25,7 @@ int Ponto2d::YMundoParaViewport(Janela mundo, Janela viewport) {
 }
 
 UnicodeString Ponto2d::ToString() {
-	return "(" + FloatToStr(X) + ", " + FloatToStr(Y) + ");";
+	return "(" + FloatToStr(round(X)) + ", " + FloatToStr(round(Y)) + ");";
 }
 
 void Ponto2d::Transladar(double dx, double dy) {
@@ -48,10 +47,9 @@ void Ponto2d::EscalonamentoHomogeneo(vector<vector<double>> homogenea) {
 
 void Ponto2d::Rotacionar(double angulo) {
 	double radian = angulo * M_PI / 180;
-	double newX = X * cos(radian) - Y * sin(radian);
-	double newY = X * sin(radian) + Y * cos(radian);
-	X = newX;
-    Y = newY;
+	double oldX = X;
+	X = X * cos(radian) - Y * sin(radian);
+	Y = oldX * sin(radian) + Y * cos(radian);
 }
 
 void Ponto2d::RotacaoHomogenea(vector<vector<double>> homogenea) {
