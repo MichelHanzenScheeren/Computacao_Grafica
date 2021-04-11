@@ -118,7 +118,10 @@ void DisplayFile::AplicarClipping(Janela clipping) {
 
 		vector<Ponto2d*> pontos = Poligonos[i]->FiltrarPontosDoClipping(clipping);
 		if(pontos.size() != 0) {
-			Poligono *poligono = new Poligono(GerarNovoId(), Poligonos[i]->Tipo + " - Clipped");
+			Poligono *poligono = new Poligono(
+				GerarNovoId(), Poligonos[i]->Tipo.SubString(0,4) +
+				". Clipping (" + IntToStr(Poligonos[i]->Id) + ")"
+			);
 			poligono->AdicionarPontos(pontos);
 			AdicionarPoligono(poligono);
 		}
@@ -126,7 +129,6 @@ void DisplayFile::AplicarClipping(Janela clipping) {
 }
 
 void DisplayFile::ApagarPoligono(int index) {
-
 	if (index >= 0 && index < Poligonos.size()) {
 		vector<Poligono*>::iterator myIterator;
 		myIterator = Poligonos.begin();
@@ -137,43 +139,48 @@ void DisplayFile::ApagarPoligono(int index) {
 }
 
 // CURVAS
-void DisplayFile::_registrarCurva(vector<Ponto2d*> *pontos, UnicodeString nome) {
+void DisplayFile::_registrarCurva(
+	vector<Ponto2d*> *pontos, UnicodeString nome, int index)
+{
 	if(pontos->size() != 0) {
 		int id = GerarNovoId();
-		Poligono *poligono = new Poligono(id, nome + IntToStr(id - 3));
+		Poligono *poligono = new Poligono(
+			id,
+			nome + " (" + IntToStr(Poligonos[index]->Id) + ")"
+		);
 		poligono->AdicionarPontos(*pontos);
 		AdicionarPoligono(poligono);
 	}
 }
 void DisplayFile::AplicarCasteljau(int index, double precisao) {
 	vector<Ponto2d*> pontos = Poligonos[index]->AplicarCasteljau(precisao);
-	_registrarCurva(&pontos, "Casteljau ");
+	_registrarCurva(&pontos, "Casteljau ", index);
 }
 
 void DisplayFile::AplicarHermite(int index, double intervalo) {
 	vector<Ponto2d*> pontos = Poligonos[index]->AplicarHermite(intervalo);
-	_registrarCurva(&pontos, "Hermite ");
+	_registrarCurva(&pontos, "Hermite ", index);
 }
 
 void DisplayFile::AplicarBezier(int index, double intervalo) {
 	vector<Ponto2d*> pontos = Poligonos[index]->AplicarBezier(intervalo);
-	_registrarCurva(&pontos, "Bezier ");
+	_registrarCurva(&pontos, "Bezier ", index);
 }
 
 void DisplayFile::AplicarBSpline(int index, double intervalo) {
 	vector<Ponto2d*> pontos = Poligonos[index]->AplicarBSpline(intervalo);
-	_registrarCurva(&pontos, "BSpline ");
+	_registrarCurva(&pontos, "BSpline ", index);
 }
 
 void DisplayFile::AplicarBSplineFwDif(int index, double intervalo) {
 	vector<Ponto2d*> pontos = Poligonos[index]->AplicarBSplineFwDif(intervalo);
-	_registrarCurva(&pontos, "BSplineFwDif ");
+	_registrarCurva(&pontos, "BSplineFwDif ", index);
 }
 
 // 3D
 void DisplayFile::CriarPoliedro(vector<vector<double>> linhas) {
 	int id = GerarNovoId();
-	Poligono *poligono = new Poliedro(id, "Poliedro");
+	Poligono *poligono = (Poligono*)new Poliedro(id, "Poliedro");
 	for (int i = 0; i < linhas.size(); i++) {
 		Ponto2d *ponto = new Ponto3d(linhas[i][0], linhas[i][1], linhas[i][2]);
 		poligono->Pontos.push_back(ponto);

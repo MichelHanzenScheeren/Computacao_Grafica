@@ -40,7 +40,7 @@ class DisplayFile
 		void AplicarClipping(Janela);
 		void ApagarPoligono(int);
 		// CURVAS
-        void _registrarCurva(vector<Ponto2d*> *, UnicodeString);
+        void _registrarCurva(vector<Ponto2d*> *, UnicodeString, int);
 		void AplicarCasteljau(int, double);
 		void AplicarHermite(int, double);
         void AplicarBezier(int, double);

@@ -2,6 +2,7 @@
 #ifndef ClippingH
 #define ClippingH
 #include "Ponto2d.h"
+#include "Ponto3d.h"
 #include "Janela.h"
 #include <vector>
 using std::vector;

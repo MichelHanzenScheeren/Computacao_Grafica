@@ -24,7 +24,7 @@ void Poligono::AdicionarPontos(vector<Ponto2d*> pontos) {
 void Poligono::Desenhar(
 	TCanvas *canvas, int algoritmo, Janela mundo, Janela viewport)
 {
-	if (Tipo.SubString(0, 7) == "Círculo") {
+	if (Tipo.SubString(0, 4) == "Círc") {
 		DesenharCirculo(canvas, mundo, viewport);
 	} else if (algoritmo == 0) {
 		LineTo(canvas, mundo, viewport);
