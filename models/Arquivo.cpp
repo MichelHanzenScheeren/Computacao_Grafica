@@ -4,10 +4,6 @@
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 
-//Arquivo::Arquivo(char * caminho) {
-//	//_caminhoArquivo = caminho;
-//}
-
 vector<vector<double>> Arquivo::Ler(char *caminho)
 {
 	 _arquivo = fopen(caminho, "r");

@@ -10,7 +10,6 @@ class Arquivo {
 	FILE *_arquivo = NULL;
     vector<vector<double>> _resultado;
 	public:
-//		Arquivo(char *);
 		vector<vector<double>> Ler(char *caminho);
 };
 #endif
