@@ -119,8 +119,8 @@ void DisplayFile::AplicarClipping(Janela clipping) {
 		vector<Ponto2d*> pontos = Poligonos[i]->FiltrarPontosDoClipping(clipping);
 		if(pontos.size() != 0) {
 			Poligono *poligono = new Poligono(
-				GerarNovoId(), Poligonos[i]->Tipo.SubString(0,4) +
-				". Clipping (" + IntToStr(Poligonos[i]->Id) + ")"
+				GerarNovoId(), "Clip " + Poligonos[i]->Tipo.SubString(0,5)
+				 + ". (" + IntToStr(Poligonos[i]->Id) + ")"
 			);
 			poligono->AdicionarPontos(pontos);
 			AdicionarPoligono(poligono);

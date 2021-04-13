@@ -24,7 +24,8 @@ void Poligono::AdicionarPontos(vector<Ponto2d*> pontos) {
 void Poligono::Desenhar(
 	TCanvas *canvas, int algoritmo, Janela mundo, Janela viewport)
 {
-	if (Tipo.SubString(0, 4) == "Círc") {
+	_alterarCorDoPincel(canvas);
+	if (Tipo.SubString(0, 5) == "Círcu" || Tipo.SubString(0, 8) == "Clip Cír") {
 		DesenharCirculo(canvas, mundo, viewport);
 	} else if (algoritmo == 0) {
 		LineTo(canvas, mundo, viewport);
@@ -37,12 +38,30 @@ void Poligono::Desenhar(
 	}
 }
 
+void Poligono::_alterarCorDoPincel(TCanvas *canvas) {
+	UnicodeString name = Tipo.SubString(0,5);
+	if(name == "Eixo " || name == "Clipp") {
+		canvas->Pen->Color = clBlack;
+    }
+	else if(name == "Polig") {
+		canvas->Pen->Color = clBlue;
+	} else if (name == "Círcu") {
+		canvas->Pen->Color = clFuchsia;
+	} else if(name == "Clip ") {
+		canvas->Pen->Color = clRed;
+	} else if(name == "Polie") {
+		canvas->Pen->Color = clLime;
+	} else {
+		canvas->Pen->Color = clGreen;
+	}
+}
+
 void Poligono::DesenharCirculo(TCanvas *canvas, Janela mundo, Janela viewport) {
 	int xvp, yvp;
 	for(int i = 0; i < Pontos.size(); i++) {
 		xvp = Pontos[i]->XMundoParaViewport(mundo, viewport);
 		yvp = Pontos[i]->YMundoParaViewport(mundo, viewport);
-		canvas->Pixels[xvp][yvp] = clBlack;
+		canvas->Pixels[xvp][yvp] = canvas->Pen->Color;
 	}
 }
 
@@ -52,7 +71,7 @@ void Poligono::LineTo(TCanvas *canvas, Janela mundo, Janela viewport) {
 		xvp = Pontos[i]->XMundoParaViewport(mundo, viewport);
 		yvp = Pontos[i]->YMundoParaViewport(mundo, viewport);
 		if(i == 0) {
-            canvas->Pixels[xvp][yvp] = clBlack;
+			canvas->Pixels[xvp][yvp] = canvas->Pen->Color;
 			canvas->MoveTo(xvp, yvp);
 		} else {
 			canvas->LineTo(xvp, yvp);

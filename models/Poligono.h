@@ -32,6 +32,7 @@ class Poligono
 		void AdicionarPonto(Ponto2d*);
 		void AdicionarPontos(vector<Ponto2d*>);
 		void Desenhar(TCanvas *, int, Janela, Janela);
+		void _alterarCorDoPincel(TCanvas *);
 		void DesenharCirculo(TCanvas *, Janela, Janela);
 		void GerarPontosDoCirculo(Ponto2d*);
 		void AdicionarPontosAoCirculo(int, int, int, int);

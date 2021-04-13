@@ -40,7 +40,7 @@ void Bresenham::Desenhar(Janela mundo, Janela viewport) {
 		}
 		erro = 2 * deltay - deltax;
 		for (int j = 0; j < deltax; j++) {
-			_canvas->Pixels[xvp1][yvp1] = clBlack;
+			_canvas->Pixels[xvp1][yvp1] = _canvas->Pen->Color;
 			while (erro >= 0) {
 				if (interchange) {
 					xvp1 += signalx;

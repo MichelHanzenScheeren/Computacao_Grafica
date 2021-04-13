@@ -33,7 +33,7 @@ void Dda::Desenhar(Janela mundo, Janela viewport) {
 		y = yvp1 + 0.5 * SIGN(deltay);
 
 		for (int j = 0; j < length; j++) {
-			_canvas->Pixels[floor(x)][floor(y)] = clBlack;
+			_canvas->Pixels[floor(x)][floor(y)] = _canvas->Pen->Color;
 			x += deltax;
 			y += deltay;
 		}
